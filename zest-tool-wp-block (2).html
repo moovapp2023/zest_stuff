@@ -1,0 +1,1612 @@
+<!-- 
+  ZEST QUESTIONNAIRE TOOL — WordPress Custom HTML Block
+  Paste this entire block into a Gutenberg Custom HTML block
+  No iframe · Self-contained · SEO/AIO/E-EAT optimized
+  Last updated: March 2026
+-->
+
+<!-- SEO/AIO: Hidden structured content — read by crawlers, invisible to users -->
+<div style="display:none" aria-hidden="true" itemscope itemtype="https://schema.org/WebApplication">
+  <meta itemprop="name" content="Générateur de questionnaire baromètre social">
+  <meta itemprop="description" content="Outil gratuit pour créer un questionnaire baromètre social personnalisé selon votre objectif RH. Basé sur la méthodologie Zest — 1 207 salariés analysés.">
+  <meta itemprop="applicationCategory" content="BusinessApplication">
+  <meta itemprop="url" content="https://zestmeup.com/generez-votre-questionnaire-barometre-social-en-2-minutes/">
+  <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+    <meta itemprop="price" content="0">
+    <meta itemprop="priceCurrency" content="EUR">
+  </div>
+  <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+    <meta itemprop="name" content="Zest">
+    <meta itemprop="url" content="https://zestmeup.com">
+  </div>
+  <!-- AIO: Content summary for AI crawlers -->
+  <p>Cet outil permet de générer un questionnaire baromètre social en choisissant parmi 5 objectifs RH : mesurer la satisfaction, anticiper le turnover, prévenir les risques psychosociaux (RPS), améliorer l'engagement collaborateur, ou obtenir une visibilité terrain. Les questions sont issues de la méthodologie Zest, baromètre annuel conduit auprès de 1 207 salariés français représentatifs INSEE.</p>
+</div>
+
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --navy: #21304E;
+  --dark: #0F192E;
+  --green: #00D85D;
+  --turq: #0EBDB3;
+  --beige: #F0EFEB;
+  --blue: #4481FF;
+  --white: #fff;
+  --grad: linear-gradient(135deg, #00D85D 0%, #0EBDB3 100%);
+  --shadow: 0 4px 24px rgba(15,25,46,.10);
+  --shadow-lg: 0 8px 40px rgba(15,25,46,.18);
+  --r: 16px;
+  --r-sm: 10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+.zt{max-width:100%;margin:0 auto;padding:32px 0 60px;}
+
+/* HEADER */
+.zt-hdr{text-align:center;margin-bottom:36px;}
+.zt-hdr-badge{display:inline-block;background:var(--grad);color:#fff;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:14px;}
+.zt-hdr h1{font-size:clamp(20px,4vw,30px);font-weight:800;color:var(--dark);line-height:1.2;margin-bottom:10px;}
+.zt-hdr h1 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.zt-hdr p{font-size:14px;color:var(--navy);opacity:.7;max-width:500px;margin:0 auto;line-height:1.6;}
+
+/* STEPS */
+.zt-steps{display:flex;align-items:center;justify-content:center;margin-bottom:36px;gap:0;}
+.zt-step{display:flex;align-items:center;gap:8px;}
+.zt-step-n{width:30px;height:30px;border-radius:50%;border:2px solid #a8b4c4;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#a8b4c4;transition:all .3s;flex-shrink:0;}
+.zt-step-lbl{font-size:13px;font-weight:600;color:#8c99b0;white-space:nowrap;transition:all .3s;}
+.zt-step.active .zt-step-n{background:var(--grad);border-color:transparent;color:#fff;}
+.zt-step.active .zt-step-lbl{color:var(--dark);}
+.zt-step.done .zt-step-n{background:var(--navy);border-color:transparent;color:#fff;}
+.zt-step.done .zt-step-lbl{color:var(--navy);}
+.zt-step-line{width:36px;height:2px;background:#b8c4d4;flex-shrink:0;transition:background .3s;}
+.zt-step-line.done{background:var(--navy);}
+@media(max-width:500px){.zt-step-lbl{display:none;}.zt-step-line{width:20px;}}
+
+/* CARD */
+.zt-card{background:#fff;border-radius:var(--r);box-shadow:0 2px 12px rgba(15,25,46,.07);padding:36px 40px;margin-bottom:20px;}
+.zt-card-title{font-size:21px;font-weight:800;color:var(--dark);margin-bottom:6px;}
+.zt-card-sub{font-size:15px;color:var(--navy);opacity:.8;margin-bottom:22px;line-height:1.5;}
+
+/* OBJECTIVE GRID */
+.zt-goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+.zt-goal{border:1.5px solid #dde3ef;border-radius:var(--r-sm);background:#fff;cursor:pointer;padding:20px 18px;display:flex;align-items:flex-start;gap:12px;transition:all .2s;text-align:left;}
+.zt-goal:hover{border-color:var(--green);box-shadow:0 4px 16px rgba(0,216,93,.15);transform:translateY(-2px);}
+.zt-goal.sel{border-color:var(--green);background:linear-gradient(135deg,rgba(0,216,93,.06),rgba(14,189,179,.06));}
+.zt-goal-icon{width:44px;height:44px;flex-shrink:0;}
+.zt-goal-icon svg{width:100%;height:100%;}
+.zt-goal-name{font-size:15px;font-weight:700;color:var(--dark);margin-bottom:3px;line-height:1.3;}
+.zt-goal-accroche{font-size:13px;color:var(--navy);opacity:.85;line-height:1.4;}
+
+/* SLIDER */
+.zt-slider-wrap{margin-top:6px;}
+.zt-slider-bounds{display:flex;justify-content:space-between;font-size:11px;color:var(--navy);opacity:.55;margin-bottom:6px;}
+input[type=range]{-webkit-appearance:none;width:100%;height:6px;border-radius:3px;background:linear-gradient(to right,var(--green) 50%,#e0e6ef 50%);outline:none;cursor:pointer;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--dark);border:3px solid var(--green);cursor:pointer;box-shadow:0 2px 8px rgba(0,216,93,.3);}
+.zt-slider-val{text-align:center;font-size:30px;font-weight:800;color:var(--dark);margin-top:12px;}
+.zt-slider-val span{font-size:14px;font-weight:400;opacity:.45;}
+.zt-input{width:100%;border:2px solid #e8ecf2;border-radius:var(--r-sm);padding:14px 18px;font-family:'Sora',sans-serif;font-size:16px;color:var(--dark);outline:none;transition:border-color .2s;background:#fafbfd;margin-top:8px;}
+.zt-input:focus{border-color:var(--green);background:#fff;}
+.zt-input::placeholder{color:#b0b8c8;}
+
+/* BUTTONS */
+.zt-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;border-radius:50px;font-family:'Sora',sans-serif;font-size:14px;font-weight:700;cursor:pointer;border:none;transition:all .2s;text-decoration:none;}
+.zt-btn-primary{background:var(--grad);color:#fff;box-shadow:0 4px 16px rgba(0,216,93,.28);}
+.zt-btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,216,93,.38);}
+.zt-btn-ghost{background:transparent;color:var(--navy);border:2px solid #e0e6ef;}
+.zt-btn-ghost:hover{border-color:var(--navy);}
+.zt-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;}
+
+/* LOADING */
+.zt-loading{text-align:center;padding:56px 20px;}
+.zt-spinner{width:52px;height:52px;border-radius:50%;border:4px solid #e8ecf2;border-top-color:var(--green);border-right-color:var(--turq);animation:spin 1s linear infinite;margin:0 auto 20px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.zt-loading h3{font-size:18px;font-weight:700;color:var(--dark);margin-bottom:6px;}
+.zt-loading-msg{font-size:13px;color:var(--navy);opacity:.6;min-height:20px;}
+.zt-loading-cta{margin-top:24px;background:rgba(33,48,78,.04);border:1px solid rgba(0,216,93,.18);border-radius:var(--r-sm);padding:16px 20px;font-size:13px;color:var(--navy);line-height:1.6;}
+.zt-loading-cta strong{display:block;color:var(--dark);font-weight:700;margin-bottom:3px;}
+.zt-loading-cta a{color:var(--green);font-weight:700;text-decoration:none;}
+
+/* QUESTIONNAIRE OUTPUT */
+.zt-q-wrap{animation:fadein .4s ease;}
+@keyframes fadein{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+.zt-q-head{background:var(--dark);border-radius:var(--r) var(--r) 0 0;padding:24px 30px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.zt-q-head h2{font-size:20px;font-weight:800;color:#fff;margin-bottom:4px;}
+.zt-q-head p{font-size:12px;color:rgba(255,255,255,.45);}
+.zt-q-badge{background:var(--grad);color:#fff;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border-radius:20px;white-space:nowrap;}
+.zt-q-body{background:#fff;border-radius:0 0 var(--r) var(--r);padding:0 30px 28px;}
+.zt-q-meta{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid #eef1f6;margin-bottom:24px;flex-wrap:wrap;}
+.zt-q-meta-item{font-size:14px;color:var(--navy);opacity:.65;}
+.zt-q-meta-item strong{color:var(--dark);opacity:1;font-weight:700;}
+
+/* QUESTION ITEMS */
+.zt-q-item{margin-bottom:20px;break-inside:avoid;}
+.zt-q-row{display:flex;gap:10px;margin-bottom:10px;}
+.zt-q-num{font-weight:800;color:var(--green);min-width:20px;font-size:16px;flex-shrink:0;margin-top:1px;}
+.zt-q-text{font-size:16px;font-weight:500;color:var(--dark);line-height:1.55;}
+
+/* QUESTION TYPE BADGES */
+.zt-qtype{display:inline-flex;align-items:center;gap:5px;margin-left:30px;margin-bottom:8px;}
+.zt-qtype-badge{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:4px;background:rgba(14,189,179,.1);color:var(--turq);border:1px solid rgba(14,189,179,.25);}
+
+/* MÉTÉO RESPONSE */
+.zt-meteo{display:flex;gap:8px;margin-left:30px;flex-wrap:wrap;}
+.zt-meteo-opt{display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;}
+.zt-meteo-opt img{width:36px;height:36px;border-radius:50%;border:2px solid #e0e6ef;transition:border-color .15s;}
+.zt-meteo-opt:hover img{border-color:var(--green);}
+.zt-meteo-lbl{font-size:11px;color:#8c99b0;text-align:center;}
+
+/* SCALE RESPONSE */
+.zt-scale{display:flex;gap:4px;margin-left:30px;}
+.zt-scale-item{flex:1;border:1.5px solid #dde3ef;border-radius:7px;padding:7px 3px;text-align:center;font-size:9.5px;color:#8c99b0;line-height:1.3;}
+.zt-scale-circle{width:14px;height:14px;border-radius:50%;border:2px solid #c8d4e4;margin:0 auto 4px;background:#fff;}
+
+/* CHOIX SIMPLE RESPONSE */
+.zt-choix{display:flex;flex-direction:column;gap:5px;margin-left:30px;}
+.zt-choix-opt{display:flex;align-items:center;gap:8px;padding:9px 14px;border:1.5px solid #e0e6ef;border-radius:7px;font-size:15px;color:var(--navy);cursor:pointer;transition:border-color .15s;}
+.zt-choix-opt:hover{border-color:var(--green);}
+.zt-choix-dot{width:14px;height:14px;border-radius:50%;border:2px solid #c8d4e4;flex-shrink:0;}
+
+/* CURSEUR RESPONSE */
+.zt-curseur{margin-left:30px;}
+.zt-curseur-labels{display:flex;justify-content:space-between;font-size:10px;color:#8c99b0;margin-bottom:5px;}
+.zt-curseur-bar{height:6px;border-radius:3px;background:linear-gradient(to right,var(--green),var(--turq));position:relative;}
+.zt-curseur-dot{width:18px;height:18px;border-radius:50%;background:var(--dark);border:3px solid var(--green);position:absolute;top:50%;left:30%;transform:translate(-50%,-50%);}
+
+/* ÉTOILE RESPONSE */
+.zt-etoile{display:flex;gap:6px;margin-left:30px;}
+.zt-star{font-size:22px;color:#e0e6ef;cursor:pointer;transition:color .15s;}
+.zt-star:hover{color:#f4c542;}
+
+/* SMILEY RESPONSE */
+.zt-smiley{display:flex;gap:10px;margin-left:30px;}
+.zt-smiley-opt{font-size:24px;cursor:pointer;filter:grayscale(1);opacity:.5;transition:all .15s;}
+.zt-smiley-opt:hover{filter:grayscale(0);opacity:1;transform:scale(1.15);}
+
+/* GATE */
+.zt-locked{position:relative;overflow:hidden;margin-top:8px;}
+.zt-locked-blur{filter:blur(3px);pointer-events:none;user-select:none;opacity:.45;}
+.zt-locked-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(to bottom,rgba(255,255,255,.2) 0%,rgba(255,255,255,.97) 55%);z-index:10;}
+.zt-gate{text-align:center;padding:32px 20px;}
+.zt-gate-icon{width:52px;height:52px;margin:0 auto 16px;}
+.zt-gate h3{font-size:20px;font-weight:800;color:var(--dark);margin-bottom:8px;line-height:1.3;}
+.zt-gate p{font-size:15px;color:var(--navy);opacity:.7;max-width:380px;margin:0 auto 24px;line-height:1.6;}
+#hsFormContainer .hs-form input[type=email],
+#hsFormContainer .hs-form input[type=text]{width:100%!important;border:2px solid #e8ecf2!important;border-radius:var(--r-sm)!important;padding:13px 16px!important;font-family:'Sora',sans-serif!important;font-size:14px!important;margin-bottom:10px!important;outline:none!important;}
+#hsFormContainer .hs-form .hs-button{width:100%!important;background:var(--grad)!important;color:#fff!important;border:none!important;border-radius:50px!important;padding:13px!important;font-family:'Sora',sans-serif!important;font-size:14px!important;font-weight:700!important;cursor:pointer!important;}
+#hsFormContainer .hs-form label{font-size:12px;font-weight:600;color:var(--navy);margin-bottom:5px;display:block;}
+#hsFormContainer{max-width:360px;margin:0 auto;}
+
+/* PRINT */
+@media print{
+  body{background:#fff;}
+  .zt-hdr,.zt-steps,.zt-actions,.zt-locked-overlay,.zt-gate{display:none!important;}
+  .zt-locked-blur{filter:none;opacity:1;pointer-events:auto;}
+}
+
+
+/* ── LOADING SCREEN V2 ── */
+.zt-loading-v2 { padding: 28px 32px; }
+
+.zt-load-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.zt-load-icon {
+  position: relative;
+  flex-shrink: 0;
+  width: 36px; height: 36px;
+}
+.zt-load-icon svg { display: block; animation: zt-rotate 2s linear infinite; }
+@keyframes zt-rotate { to { transform: rotate(360deg); } }
+.zt-load-pct {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  font-weight: 800;
+  color: var(--dark);
+}
+.zt-load-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 3px;
+}
+.zt-load-msg {
+  font-size: 14px;
+  color: var(--navy);
+  opacity: .6;
+  min-height: 18px;
+  transition: opacity .3s;
+}
+
+/* Progress bar */
+.zt-progress-track {
+  height: 6px;
+  background: #e8ecf2;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.zt-progress-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #00D85D, #0EBDB3);
+  transition: width 0.4s ease;
+}
+
+/* Ad card */
+.zt-load-ad {
+  background: linear-gradient(135deg, rgba(0,216,93,.07), rgba(14,189,179,.05));
+  border: 1px solid rgba(0,216,93,.18);
+  border-radius: var(--r-sm);
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.zt-ad-left { flex: 1; min-width: 0; }
+.zt-ad-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--turq);
+  margin-bottom: 5px;
+}
+.zt-ad-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.zt-ad-body {
+  font-size: 14px;
+  color: var(--navy);
+  opacity: .65;
+  line-height: 1.5;
+}
+.zt-ad-cta {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  background: var(--grad);
+  color: #0F192E;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 9px 16px;
+  border-radius: 7px;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: opacity .2s;
+}
+.zt-ad-cta:hover { opacity: .85; }
+
+
+/* ── MODAL HEADER ── */
+.zt-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px 18px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  flex-shrink: 0;
+}
+.zt-modal-badge {
+  font-family: 'Sora', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #00D85D, #0EBDB3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 5px;
+}
+.zt-modal-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+}
+.zt-modal-close {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.08);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,.6);
+  transition: all .15s;
+  flex-shrink: 0;
+}
+.zt-modal-close:hover {
+  background: rgba(255,255,255,.15);
+  color: #fff;
+}
+
+/* ── MODAL BODY — scrollable ── */
+.zt-modal-body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  background: #F0EFEB;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Override tool background when inside modal */
+.zt-modal-body #ztApp {
+  background: transparent;
+  padding-bottom: 40px;
+}
+.zt-modal-body .zt-card {
+  background: #fff;
+}
+.zt-modal-body .zt-loading-v2 {
+  background: #fff;
+}
+
+/* Drag indicator */
+.zt-modal-panel::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255,255,255,.2);
+  margin: 10px auto -6px;
+  flex-shrink: 0;
+}
+
+@media (min-width: 700px) {
+  .zt-modal-overlay {
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .zt-modal-panel {
+    border-radius: 20px;
+    max-width: 860px;
+    max-height: 88vh;
+    width: 100%;
+    animation: zt-panel-in-center .3s cubic-bezier(.32,.72,0,1);
+  }
+  @keyframes zt-panel-in-center {
+    from { opacity:0; transform: scale(.96) translateY(12px); }
+    to { opacity:1; transform: scale(1) translateY(0); }
+  }
+  .zt-modal-panel::before { display:none; }
+}
+
+/* Escape key close */
+.zt-modal-overlay:focus { outline: none; }
+
+
+/* ── TOOL ZONE — dark background section ── */
+.zt-tool-zone {
+  background: #fff;
+  margin: 0 calc(-50vw + 50%);
+  padding: 48px calc(50vw - 50%) 64px;
+  position: relative;
+  overflow: hidden;
+}
+/* Subtle gradient mesh */
+.zt-tool-zone::before { display: none; }
+.zt-tool-zone-inner {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+  z-index: 1;
+}
+
+
+/* Entry card sits on dark bg — simplify it */
+.zt-tool-zone .zt-card-entry {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: none;
+}
+.zt-tool-zone .zt-card-entry::before {
+  display: none; /* remove double glow */
+}
+
+
+/* ── QUESTIONNAIRE SCROLL CONTAINER ── */
+.zt-q-scroll-wrap {
+  max-height: 480px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 0 0 var(--r) var(--r);
+  margin: 0 -30px -28px;
+  padding: 0 30px 28px;
+  -webkit-overflow-scrolling: touch;
+}
+.zt-q-scroll-wrap::-webkit-scrollbar {
+  width: 4px;
+}
+.zt-q-scroll-wrap::-webkit-scrollbar-track {
+  background: #f0f3f8;
+}
+.zt-q-scroll-wrap::-webkit-scrollbar-thumb {
+  background: linear-gradient(#00D85D, #0EBDB3);
+  border-radius: 2px;
+}
+/* Fade out at bottom to signal more content */
+.zt-q-scroll-wrap::after {
+  content: '';
+  position: sticky;
+  bottom: 0;
+  display: block;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,.95));
+  margin: -40px -30px 0;
+  pointer-events: none;
+}
+/* Remove fade when gate is unlocked */
+.zt-q-scroll-wrap.unlocked::after { display: none; }
+
+
+/* ── GATE RATINGS ── */
+.zt-gate-ratings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 0 auto 20px;
+  background: #f8f9fc;
+  border: 1px solid #eef1f6;
+  border-radius: 10px;
+  padding: 12px 24px;
+  max-width: 300px;
+}
+.zt-gate-rating-item {
+  text-align: center;
+}
+.zt-gate-rating-stars {
+  font-size: 14px;
+  color: #f4c542;
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+.zt-gate-rating-score {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.zt-gate-rating-score span {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--navy);
+  opacity: .5;
+}
+.zt-gate-rating-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--navy);
+  opacity: .55;
+}
+.zt-gate-rating-sep {
+  width: 1px;
+  height: 36px;
+  background: #e0e6ef;
+  flex-shrink: 0;
+}
+
+
+/* ── FORM OVERLAY (covers tool on gate trigger) ── */
+.zt-form-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(15,25,46,.6);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.zt-form-overlay.open {
+  display: flex;
+  animation: zt-fade-in .25s ease;
+}
+@keyframes zt-fade-in { from { opacity:0; } to { opacity:1; } }
+.zt-form-panel {
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(15,25,46,.3);
+  animation: zt-slide-up .3s cubic-bezier(.32,.72,0,1);
+}
+@keyframes zt-slide-up {
+  from { transform: translateY(20px); opacity:0; }
+  to { transform: translateY(0); opacity:1; }
+}
+.zt-form-panel-head {
+  background: var(--dark);
+  border-radius: 20px 20px 0 0;
+  padding: 22px 28px 18px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.zt-form-panel-head h3 {
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.zt-form-panel-head p {
+  font-size: 13px;
+  color: rgba(255,255,255,.5);
+}
+.zt-form-close {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.1);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,.7);
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.zt-form-close:hover { background: rgba(255,255,255,.2); }
+.zt-form-panel-body {
+  padding: 24px 28px 28px;
+}
+/* HubSpot form overrides inside panel */
+.zt-form-panel-body .hs-form input[type=text],
+.zt-form-panel-body .hs-form input[type=email],
+.zt-form-panel-body .hs-form input[type=tel],
+.zt-form-panel-body .hs-form select {
+  width: 100% !important;
+  border: 1.5px solid #e8ecf2 !important;
+  border-radius: 8px !important;
+  padding: 11px 14px !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: 14px !important;
+  color: var(--dark) !important;
+  outline: none !important;
+  background: #fafbfd !important;
+  box-sizing: border-box !important;
+}
+.zt-form-panel-body .hs-form .hs-button {
+  width: 100% !important;
+  background: linear-gradient(135deg, #00D85D, #0EBDB3) !important;
+  color: #0F192E !important;
+  border: none !important;
+  border-radius: 50px !important;
+  padding: 14px !important;
+  font-family: 'Sora', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  margin-top: 8px !important;
+}
+.zt-form-panel-body .hs-form label {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--navy) !important;
+  margin-bottom: 5px !important;
+  display: block !important;
+}
+.zt-form-panel-body .hs-form .hs-form-field {
+  margin-bottom: 14px !important;
+}
+.zt-form-panel-body .hs-form .hs-error-msgs {
+  font-size: 11px !important;
+  color: #e53e3e !important;
+}
+/* Thank you message — hide it */
+.zt-form-panel-body .submitted-message { display: none !important; }
+
+/* Ratings in form panel */
+.zt-form-ratings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #eef1f6;
+  margin-bottom: 20px;
+}
+.zt-form-rating-item { text-align: center; }
+.zt-form-rating-stars { font-size: 13px; color: #f4c542; margin-bottom: 2px; }
+.zt-form-rating-score { font-size: 18px; font-weight: 800; color: var(--dark); }
+.zt-form-rating-score span { font-size: 11px; font-weight: 400; color: #8c99b0; }
+.zt-form-rating-label { font-size: 10px; font-weight: 600; color: #8c99b0; }
+.zt-form-rating-sep { width: 1px; height: 32px; background: #e8ecf2; }
+
+/* ── DOWNLOAD BUTTON ── */
+.zt-dl-wrap {
+  text-align: center;
+  padding: 20px 0 8px;
+  display: none;
+}
+.zt-dl-wrap.visible { display: block; animation: zt-fade-in .4s ease; }
+.zt-dl-btn-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--grad);
+  color: #0F192E;
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: all .2s;
+  box-shadow: 0 4px 16px rgba(0,216,93,.25);
+}
+.zt-dl-btn-main:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,216,93,.35); }
+.zt-dl-btn-main svg { width: 18px; height: 18px; }
+.zt-dl-note { font-size: 12px; color: #8c99b0; margin-top: 8px; }
+
+/* WP isolation */
+#ztApp, #ztApp * { font-family: 'Sora', sans-serif; }
+#ztApp { background: transparent; }
+.zt-tool-zone .zt { padding-top: 0; padding-bottom: 0; }
+.zt-tool-zone .zt-card {
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(15,25,46,.08);
+  border: 1px solid #eef1f6;
+}
+.zt-tool-zone .zt-hdr h1,
+.zt-tool-zone .zt-card-title { color: #0F192E; }
+.zt-tool-zone .zt-step-lbl { color: #21304E; }
+</style>
+
+<noscript>
+  <div style="font-family:'Sora',sans-serif;background:#F0EFEB;border-radius:12px;padding:24px;margin:20px 0;text-align:center;">
+    <p style="font-size:15px;color:#21304E;margin-bottom:12px;">Ce générateur de questionnaire nécessite JavaScript pour fonctionner.</p>
+    <p style="font-size:13px;color:#8c99b0;">Pour accéder à un modèle de questionnaire baromètre social, <a href="https://zestmeup.com/demo/" style="color:#00D85D;font-weight:700;">contactez nos experts RH</a>.</p>
+  </div>
+</noscript>
+
+<!-- TOOL CARD — clean entry point, SEO/AIO/E-EAT optimized -->
+<div class="zt-tool-zone">
+  <div class="zt-tool-zone-inner">
+<div class="zt" id="ztApp">
+
+  <div class="zt-steps" id="ztSteps">
+    <div class="zt-step active" id="s1"><div class="zt-step-n">1</div><div class="zt-step-lbl">Objectif</div></div>
+    <div class="zt-step-line" id="l1"></div>
+    <div class="zt-step" id="s2"><div class="zt-step-n">2</div><div class="zt-step-lbl">Paramètres</div></div>
+    <div class="zt-step-line" id="l2"></div>
+    <div class="zt-step" id="s3"><div class="zt-step-n">3</div><div class="zt-step-lbl">Questionnaire</div></div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div id="sec1">
+    <div class="zt-card">
+      <div class="zt-card-title">Quel est votre objectif RH ?</div>
+      <div class="zt-card-sub">Sélectionnez l'enjeu que vous souhaitez mesurer. Chaque objectif génère un questionnaire basé sur la méthodologie Zest.</div>
+      <div class="zt-goals" id="goalsGrid"></div>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="sec2" style="display:none">
+    <div class="zt-card">
+      <div class="zt-card-title">Paramétrez votre questionnaire</div>
+      <div class="zt-card-sub">Choisissez le nombre de questions et personnalisez avec le nom de votre entreprise.</div>
+      <label style="font-size:13px;font-weight:600;color:var(--dark);display:block;margin-bottom:18px;">
+        Nombre de questions
+        <div class="zt-slider-wrap">
+          <div class="zt-slider-bounds"><span>5</span><span>20</span></div>
+          <input type="range" id="qSlider" min="5" max="20" value="10" step="1">
+          <div class="zt-slider-val" id="qVal">10 <span>questions</span></div>
+        </div>
+      </label>
+      <label style="font-size:13px;font-weight:600;color:var(--dark);display:block;">
+        Nom de votre entreprise <span style="font-weight:400;opacity:.45;font-size:12px">(optionnel)</span>
+        <input type="text" class="zt-input" id="companyInput" placeholder="Ex : Zest, Orange, Crédit Agricole…">
+      </label>
+      <div class="zt-actions">
+        <button class="zt-btn zt-btn-ghost" onclick="goStep(1)">← Retour</button>
+        <button class="zt-btn zt-btn-primary" onclick="startGen()">Générer mon questionnaire →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div id="secLoad" style="display:none">
+    <div class="zt-card zt-loading-v2">
+
+      <!-- Top: status messages -->
+      <div class="zt-load-top">
+        <div class="zt-load-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="16" stroke="#e8ecf2" stroke-width="3"/>
+            <circle cx="18" cy="18" r="16" stroke="url(#loadGrad)" stroke-width="3" stroke-linecap="round" stroke-dasharray="100" stroke-dashoffset="100" id="loadCircle"/>
+            <defs>
+              <linearGradient id="loadGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#00D85D"/>
+                <stop offset="1" stop-color="#0EBDB3"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="zt-load-pct" id="loadPct">0%</span>
+        </div>
+        <div>
+          <div class="zt-load-title">Génération en cours…</div>
+          <div class="zt-load-msg" id="loadMsg">Sélection des questions selon votre objectif…</div>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="zt-progress-track">
+        <div class="zt-progress-bar" id="loadBar"></div>
+      </div>
+
+      <!-- Ad banner: single, light, banner-style -->
+      <div class="zt-load-ad" id="loadAd">
+        <div class="zt-ad-left">
+          <div class="zt-ad-eyebrow">La plateforme Zest</div>
+          <div class="zt-ad-title">Ce questionnaire est votre premier pas. Zest fait le reste.</div>
+          <div class="zt-ad-body">Collecte anonyme, analyse automatique, benchmarks sectoriels, plans d'action — sans Excel, sans effort.</div>
+        </div>
+        <a href="https://www.zestmeup.com/demo/" target="_blank" class="zt-ad-cta">Voir la plateforme →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HIDDEN PRINT DIV — static, non-interactive, for PDF capture -->
+  <div id="ztPrintDiv" style="display:none;position:absolute;left:-9999px;top:0;width:800px;background:#fff;font-family:'Sora',sans-serif;"></div>
+
+  <!-- STEP 3 -->
+  <div id="sec3" style="display:none">
+    <div class="zt-q-wrap">
+      <div class="zt-q-head">
+        <div>
+          <h2 id="qTitle">Questionnaire baromètre social</h2>
+          <p id="qSub">Généré par la méthodologie Zest</p>
+        </div>
+        <div class="zt-q-badge">Méthodologie Zest</div>
+      </div>
+      <div class="zt-q-body">
+        <div class="zt-dl-wrap" id="ztDlWrap">
+          <button class="zt-dl-btn-main" onclick="generatePDF()">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 15V3M12 15L8 11M12 15L16 11M3 17v2a2 2 0 002 2h14a2 2 0 002-2v-2" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Voir et télécharger mon questionnaire →
+          </button>
+          <div class="zt-dl-note">Questionnaire personnalisé · Méthodologie Zest</div>
+        </div>
+        <div class="zt-q-meta">
+          <div class="zt-q-meta-item">Questions : <strong id="mCount">—</strong></div>
+          <div class="zt-q-meta-item">Objectif : <strong id="mGoal">—</strong></div>
+          <div class="zt-q-meta-item">Date : <strong id="mDate">—</strong></div>
+        </div>
+        <div class="zt-q-scroll-wrap">
+          <div id="qContent"></div>
+        </div>
+      </div>
+    </div>
+    <div class="zt-actions"><button class="zt-btn zt-btn-ghost" onclick="goStep(2)">← Modifier</button></div>
+  </div>
+
+</div>
+  </div>
+</div>
+
+<!-- HUBSPOT FORM OVERLAY -->
+<div class="zt-form-overlay" id="ztFormOverlay">
+  <div class="zt-form-panel">
+    <div class="zt-form-panel-head">
+      <div>
+        <h3>Accédez à votre questionnaire complet</h3>
+        <p>Remplissez le formulaire pour télécharger votre questionnaire personnalisé.</p>
+      </div>
+      <button class="zt-form-close" onclick="closeFormOverlay()" aria-label="Fermer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="zt-form-panel-body">
+      <div class="zt-form-ratings">
+        <div class="zt-form-rating-item">
+          <div class="zt-form-rating-stars">★★★★★</div>
+          <div class="zt-form-rating-score">4.5<span>/5</span></div>
+          <div class="zt-form-rating-label">Capterra</div>
+        </div>
+        <div class="zt-form-rating-sep"></div>
+        <div class="zt-form-rating-item">
+          <div class="zt-form-rating-score">8.9<span>/10</span></div>
+          <div class="zt-form-rating-label">95% avis positifs</div>
+        </div>
+      </div>
+      <div id="ztHsFormPanel"></div>
+    </div>
+  </div>
+</div>
+
+<!-- HubSpot SDK -->
+
+    </div><!-- /zt-modal-body -->
+  </div><!-- /zt-modal-panel -->
+</div><!-- /ztModal -->
+
+<script charset="utf-8" type="text/javascript" src="//js-eu1.hsforms.net/forms/embed/v2.js"></script>
+
+<script>
+// ═══════════════════════════════════
+// ZEST QUESTIONNAIRE TOOL v2.0
+// ═══════════════════════════════════
+
+// ── WEATHER IMAGES (base64) ──
+const WEATHER_URLS = {
+  Storm: 'https://raw.githubusercontent.com/moovapp2023/zest_stuff/main/Icones-meteo-zest/Storm.png',
+  Rain:  'https://raw.githubusercontent.com/moovapp2023/zest_stuff/main/Icones-meteo-zest/Rain.png',
+  Cloud: 'https://raw.githubusercontent.com/moovapp2023/zest_stuff/main/Icones-meteo-zest/Cloud.png',
+  Mixed: 'https://raw.githubusercontent.com/moovapp2023/zest_stuff/main/Icones-meteo-zest/Mixed.png',
+  Sun:   'https://raw.githubusercontent.com/moovapp2023/zest_stuff/main/Icones-meteo-zest/Sun.png',
+};
+// Preload weather images as blob URLs to bypass any WP content filtering
+const WEATHER = { Storm:'', Rain:'', Cloud:'', Mixed:'', Sun:'' };
+(function preloadWeather() {
+  Object.keys(WEATHER_URLS).forEach(name => {
+    fetch(WEATHER_URLS[name])
+      .then(r => r.blob())
+      .then(blob => {
+        WEATHER[name] = URL.createObjectURL(blob);
+        // Update any already-rendered meteo images
+        document.querySelectorAll('img[data-weather="' + name + '"]').forEach(img => {
+          img.src = WEATHER[name];
+        });
+      })
+      .catch(() => { WEATHER[name] = WEATHER_URLS[name]; });
+  });
+})();
+
+// ── QUESTION TYPE RENDERERS ──
+function renderMeteo(num, text) {
+  return `<div class="zt-q-item">
+    <div class="zt-q-row"><span class="zt-q-num">${num}.</span><span class="zt-q-text">${text}</span></div>
+    <div class="zt-qtype"><span class="zt-qtype-badge">Météo</span></div>
+    <div class="zt-meteo">
+      <div class="zt-meteo-opt"><img src="${WEATHER.Storm||WEATHER_URLS.Storm}" data-weather="Storm" alt="Très mal"><div class="zt-meteo-lbl">Très mal</div></div>
+      <div class="zt-meteo-opt"><img src="${WEATHER.Rain||WEATHER_URLS.Rain}" data-weather="Rain" alt="Mal"><div class="zt-meteo-lbl">Mal</div></div>
+      <div class="zt-meteo-opt"><img src="${WEATHER.Cloud||WEATHER_URLS.Cloud}" data-weather="Cloud" alt="Moyen"><div class="zt-meteo-lbl">Moyen</div></div>
+      <div class="zt-meteo-opt"><img src="${WEATHER.Mixed||WEATHER_URLS.Mixed}" data-weather="Mixed" alt="Bien"><div class="zt-meteo-lbl">Bien</div></div>
+      <div class="zt-meteo-opt"><img src="${WEATHER.Sun||WEATHER_URLS.Sun}" data-weather="Sun" alt="Très bien"><div class="zt-meteo-lbl">Très bien</div></div>
+    </div>
+  </div>`;
+}
+
+function renderChoix(num, text, opts) {
+  const items = opts.map(o => `<div class="zt-choix-opt"><div class="zt-choix-dot"></div>${o}</div>`).join('');
+  return `<div class="zt-q-item">
+    <div class="zt-q-row"><span class="zt-q-num">${num}.</span><span class="zt-q-text">${text}</span></div>
+    <div class="zt-qtype"><span class="zt-qtype-badge">Choix simple</span></div>
+    <div class="zt-choix">${items}</div>
+  </div>`;
+}
+
+function renderCurseur(num, text, min='Pas du tout', max='Totalement') {
+  return `<div class="zt-q-item">
+    <div class="zt-q-row"><span class="zt-q-num">${num}.</span><span class="zt-q-text">${text}</span></div>
+    <div class="zt-qtype"><span class="zt-qtype-badge">Curseur</span></div>
+    <div class="zt-curseur">
+      <div class="zt-curseur-labels"><span>${min}</span><span>${max}</span></div>
+      <div class="zt-curseur-bar"><div class="zt-curseur-dot"></div></div>
+    </div>
+  </div>`;
+}
+
+function renderEtoile(num, text) {
+  return `<div class="zt-q-item">
+    <div class="zt-q-row"><span class="zt-q-num">${num}.</span><span class="zt-q-text">${text}</span></div>
+    <div class="zt-qtype"><span class="zt-qtype-badge">Étoile</span></div>
+    <div class="zt-etoile">
+      <span class="zt-star">★</span><span class="zt-star">★</span><span class="zt-star">★</span><span class="zt-star">★</span><span class="zt-star">★</span>
+    </div>
+  </div>`;
+}
+
+function renderSmiley(num, text) {
+  return `<div class="zt-q-item">
+    <div class="zt-q-row"><span class="zt-q-num">${num}.</span><span class="zt-q-text">${text}</span></div>
+    <div class="zt-qtype"><span class="zt-qtype-badge">Smiley</span></div>
+    <div class="zt-smiley">
+      <span class="zt-smiley-opt" title="Très insatisfait">😞</span>
+      <span class="zt-smiley-opt" title="Insatisfait">😕</span>
+      <span class="zt-smiley-opt" title="Neutre">😐</span>
+      <span class="zt-smiley-opt" title="Satisfait">🙂</span>
+      <span class="zt-smiley-opt" title="Très satisfait">😄</span>
+    </div>
+  </div>`;
+}
+
+// ── QUESTION BANK (from Zest CSV — full bank loaded March 2026) ──
+const QUESTIONS = {
+  satisfaction: [
+    (n,c) => renderMeteo(n, `De manière générale, comment vous sentez-vous dans votre travail?`),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de la relation avec vos collègues?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de la relation entre équipes?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderSmiley(n, `Avez-vous trouvé de l\'utilité dans votre travail?`),
+    (n,c) => renderEtoile(n, `Etes-vous satisfait(e) du climat global de l\'entreprise?`),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de la relation avec votre manager?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderChoix(n, `Avez-vous le sentiment de pouvoir parler librement sans crainte de conséquences négatives ou de répercussions?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Selon vous, vos objectifs sont-ils clairement définis?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Trouvez-vous du sens dans votre travail ?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderMeteo(n, `Etes-vous satisfait(e) de votre niveau d\'autonomie dans votre travail?`),
+    (n,c) => renderChoix(n, `Disposez-vous des moyens dont vous avez besoin pour mener à bien votre travail?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de l\'organisation de votre travail?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderMeteo(n, `Pensez-vous que votre travail vous permet de concilier votre vie professionnelle et votre vie personnelle?`),
+    (n,c) => renderChoix(n, `Pensez-vous que votre travail comporte des risques pour votre santé physique?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Pensez-vous que votre travail comporte des risques pour votre santé psychologique?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Vous sentez-vous en sécurité sur votre lieu de travail?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Trouvez-vous que votre entreprise vous accompagne efficacement dans votre développement professionnel?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Avez-vous le sentiment de solliciter toutes vos compétences dans votre travail?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Vous sentez-vous informé(e) de la stratégie d\'entreprise?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Pensez-vous que la communication de l\'entreprise est transparente?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+  ],
+  turnover: [
+    (n,c) => renderSmiley(n, `De manière générale, comment vous sentez-vous dans votre travail?`),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de la relation avec votre manager?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderChoix(n, `Selon vous, vos objectifs sont-ils clairement définis?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderMeteo(n, `Etes-vous satisfait(e) de votre niveau d\'autonomie dans votre travail?`),
+    (n,c) => renderCurseur(n, `Considérez-vous que si vous faites une erreur, votre équipe vous en tient rigueur?`, 'Pas du tout', "Totalement d'accord"),
+    (n,c) => renderEtoile(n, `Etes-vous satisfait(e) du climat global de l\'entreprise?`),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de la relation avec vos collègues?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de la relation entre équipes?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderChoix(n, `Avez-vous le sentiment de pouvoir parler librement sans crainte de conséquences négatives ou de répercussions?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Trouvez-vous du sens dans votre travail ?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Disposez-vous des moyens dont vous avez besoin pour mener à bien votre travail?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de l\'organisation de votre travail?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderEtoile(n, `Considérez-vous devoir travailler à un rythme soutenu pour atteindre vos objectifs?`),
+    (n,c) => renderMeteo(n, `Pensez-vous que votre travail vous permet de concilier votre vie professionnelle et votre vie personnelle?`),
+    (n,c) => renderChoix(n, `Disposez-vous des moyens dont vous avez besoin pour mener à bien votre travail?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Vous sentez-vous en sécurité sur votre lieu de travail?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Trouvez-vous que votre entreprise vous accompagne efficacement dans votre développement professionnel?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Avez-vous le sentiment de solliciter toutes vos compétences dans votre travail?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Vous sentez-vous informé(e) de la stratégie d\'entreprise?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Pensez-vous que la communication de l\'entreprise est transparente?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+  ],
+  rps: [
+    (n,c) => renderCurseur(n, `Mes objectifs sont clairement définis`, 'Pas du tout', "Totalement d'accord"),
+    (n,c) => renderEtoile(n, `Je dois travailler à un rythme soutenu pour atteindre mes objectifs`),
+    (n,c) => renderMeteo(n, `Mon travail me permet de concilier ma vie professionnelle et ma vie personnelle`),
+    (n,c) => renderChoix(n, `Je dois cacher mes émotions pour accomplir mon travail`, ['Jamais', 'Parfois', 'Souvent', 'Toujours']),
+    (n,c) => renderSmiley(n, `En cas de difficulté, je peux compter sur le soutien de mes supérieurs`),
+    (n,c) => renderEtoile(n, `Je dois travailler à un rythme soutenu pour atteindre mes objectifs`),
+    (n,c) => renderChoix(n, `Je suis interrompu(e) dans mon travail par des sollicitations imprévues`, ['Jamais', 'Parfois', 'Souvent', 'Toujours']),
+    (n,c) => renderChoix(n, `Je suis sollicité(e) pour des raisons professionnelles en dehors de mes horaires de travail`, ['Jamais', 'Parfois', 'Souvent', 'Toujours']),
+    (n,c) => renderChoix(n, `Je reçois des instructions qui peuvent être contradictoires entre elles`, ['Jamais', 'Parfois', 'Souvent', 'Toujours']),
+    (n,c) => renderChoix(n, `Je suis confronté(e) dans mon travail à des situations de tension avec des interlocuteurs internes`, ['Jamais', 'Parfois', 'Souvent', 'Toujours']),
+    (n,c) => renderChoix(n, `Je suis confronté(e) dans mon travail à des situations de tension avec des interlocuteurs externes`, ['Jamais', 'Parfois', 'Souvent', 'Toujours']),
+    (n,c) => renderChoix(n, `Je me sens stressé(e) dans mon travail`, ['Jamais', 'Parfois', 'Souvent', 'Toujours']),
+    (n,c) => renderChoix(n, `J\'ai la possibilité d\'organiser mon travail comme je le souhaite`, ['Jamais', 'Parfois', 'Souvent', 'Toujours']),
+    (n,c) => renderChoix(n, `Je peux anticiper et planifier mon activité à l\'avance`, ['Jamais', 'Parfois', 'Souvent', 'Toujours']),
+    (n,c) => renderChoix(n, `Mon travail me permet d\'utiliser mes compétences et d\'en développer de nouvelles`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderSmiley(n, `En cas de difficulté, je peux compter sur le soutien de mes collègues`),
+    (n,c) => renderChoix(n, `Vu tous mes efforts, je reçois le respect et l\'estime que je mérite de la part de mes collègues`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Vu tous mes efforts, je reçois le respect et l\'estime que je mérite de la part de mes supérieurs`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Je considère que je fais un travail de qualité`, ['Tout à fait d\'accord', 'Plutôt d\'accord', 'Plutôt pas d\'accord', 'Pas du tout d\'accord']),
+    (n,c) => renderChoix(n, `Je considère que je fais mon travail est utile`, ['Tout à fait d\'accord', 'Plutôt d\'accord', 'Plutôt pas d\'accord', 'Pas du tout d\'accord']),
+  ],
+  engagement: [
+    (n,c) => renderEtoile(n, `Etes-vous satisfait(e) du climat global de l\'entreprise?`),
+    (n,c) => renderMeteo(n, `De manière générale, comment vous sentez-vous dans votre travail?`),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de la relation avec votre manager?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderCurseur(n, `Etes-vous satisfait(e) de votre niveau d\'autonomie dans votre travail?`, 'Pas du tout', "Totalement d'accord"),
+    (n,c) => renderChoix(n, `Selon vous, vos objectifs sont-ils clairement définis?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderSmiley(n, `De manière générale, comment vous sentez-vous dans votre travail?`),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de la relation avec vos collègues?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de la relation entre équipes?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderChoix(n, `Avez-vous le sentiment de pouvoir parler librement sans crainte de conséquences négatives ou de répercussions?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Selon vous, vos objectifs sont-ils clairement définis?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Trouvez-vous du sens dans votre travail ?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Disposez-vous des moyens dont vous avez besoin pour mener à bien votre travail?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de l\'organisation de votre travail?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderMeteo(n, `Pensez-vous que votre travail vous permet de concilier votre vie professionnelle et votre vie personnelle?`),
+    (n,c) => renderChoix(n, `Disposez-vous des moyens dont vous avez besoin pour mener à bien votre travail?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Vous sentez-vous en sécurité sur votre lieu de travail?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Trouvez-vous que votre entreprise vous accompagne efficacement dans votre développement professionnel?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Avez-vous le sentiment de solliciter toutes vos compétences dans votre travail?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderSmiley(n, `En cas de difficulté, pouvez-vous compter sur le soutien de vos supérieurs?`),
+    (n,c) => renderChoix(n, `Vous sentez-vous informé(e) de la stratégie d\'entreprise?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Pensez-vous que la communication de l\'entreprise est transparente?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+  ],
+  terrain: [
+    (n,c) => renderMeteo(n, `De manière générale, comment vous sentez-vous dans votre travail?`),
+    (n,c) => renderEtoile(n, `Etes-vous satisfait(e) du climat global de l\'entreprise?`),
+    (n,c) => renderChoix(n, `Disposez-vous des moyens dont vous avez besoin pour mener à bien votre travail?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Vous sentez-vous en sécurité sur votre lieu de travail?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderSmiley(n, `En cas de difficulté, pouvez-vous compter sur le soutien de vos supérieurs?`),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de la relation avec vos collègues?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de la relation avec votre manager?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de la relation entre équipes?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderChoix(n, `Avez-vous le sentiment de pouvoir parler librement sans crainte de conséquences négatives ou de répercussions?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderChoix(n, `Selon vous, vos objectifs sont-ils clairement définis?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Trouvez-vous du sens dans votre travail ?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Etes-vous satisfait(e) de l\'organisation de votre travail?`, ['Très satisfait(e)', 'Plutôt satisfait(e)', 'Plutôt pas satisfait(e)', 'Pas du tout satisfait(e)']),
+    (n,c) => renderMeteo(n, `Pensez-vous que votre travail vous permet de concilier votre vie professionnelle et votre vie personnelle?`),
+    (n,c) => renderChoix(n, `Disposez-vous des moyens dont vous avez besoin pour mener à bien votre travail?`, ['Toujours (ou très souvent)', 'Souvent', 'Rarement', 'Jamais']),
+    (n,c) => renderEtoile(n, `Considérez-vous devoir travailler à un rythme soutenu pour atteindre vos objectifs?`),
+    (n,c) => renderChoix(n, `Etes-vous interrompu(e) dans votre travail par des sollicitations imprévues?`, ['Jamais', 'Parfois', 'Souvent', 'Toujours']),
+    (n,c) => renderChoix(n, `Etes-vous sollicité(e) pour des raisons professionnelles en dehors de vos horaires de travail?`, ['Jamais', 'Parfois', 'Souvent', 'Toujours']),
+    (n,c) => renderChoix(n, `Trouvez-vous que votre entreprise vous accompagne efficacement dans votre développement professionnel?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Avez-vous le sentiment de solliciter toutes vos compétences dans votre travail?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Vous sentez-vous informé(e) de la stratégie d\'entreprise?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+    (n,c) => renderChoix(n, `Pensez-vous que la communication de l\'entreprise est transparente?`, ['Oui', 'Tout à fait', 'Oui', 'Plutôt', 'Non', 'Plutôt pas', 'Non', 'Pas du tout']),
+  ],
+};
+
+const FREE_Q = 1;
+
+const GOALS = [
+  { id:'satisfaction', name:'Mesurer la satisfaction', accroche:"Piloter en continu l'expérience collaborateur et détecter les signaux faibles", icon:'MesureClimatSocial' },
+  { id:'turnover',     name:'Anticiper le turnover',   accroche:"Anticiper et réduire le turnover, fidéliser les talents clés", icon:'Progression' },
+  { id:'rps',          name:'Prévenir les RPS',        accroche:"Prévenir les risques psychosociaux et sécuriser le climat social", icon:'Attention' },
+  { id:'engagement',   name:"Améliorer l'engagement", accroche:"Activer durablement l'engagement et la performance des équipes", icon:'PeopleGood' },
+  { id:'terrain',      name:'Visibilité terrain',      accroche:"Obtenir une vision claire, en temps réel, des remontées terrain", icon:'Loupe' },
+];
+
+// ── INLINE SVG ICONS ──
+const ICONS = {
+  MesureClimatSocial: `<svg data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2" data-name="Nouvelle nuance de dégradé 2" x1="216.94" y1="136.98" x2="291.68" y2="136.98" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00d85d"/>
+      <stop offset="1" stop-color="#0ebdb3"/>
+    </linearGradient>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-2" data-name="Nouvelle nuance de dégradé 2" x1="206.86" y1="295.2" x2="301.75" y2="295.2" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-3" data-name="Nouvelle nuance de dégradé 2" x1="307.91" y1="171.07" x2="382.65" y2="171.07" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-4" data-name="Nouvelle nuance de dégradé 2" x1="320.79" y1="312.24" x2="392.72" y2="312.24" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-5" data-name="Nouvelle nuance de dégradé 2" x1="124.85" y1="171.07" x2="199.59" y2="171.07" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-6" data-name="Nouvelle nuance de dégradé 2" x1="114.78" y1="312.24" x2="186.71" y2="312.24" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-7" data-name="Nouvelle nuance de dégradé 2" x1="251.25" y1="37.72" x2="256.25" y2="37.72" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-8" data-name="Nouvelle nuance de dégradé 2" x1="139.91" y1="66.16" x2="155.31" y2="66.16" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-9" data-name="Nouvelle nuance de dégradé 2" x1="58.4" y1="143.86" x2="81.42" y2="143.86" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-10" data-name="Nouvelle nuance de dégradé 2" x1="28.56" y1="250" x2="54.37" y2="250" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-11" data-name="Nouvelle nuance de dégradé 2" x1="58.4" y1="356.14" x2="81.42" y2="356.14" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-12" data-name="Nouvelle nuance de dégradé 2" x1="139.91" y1="433.84" x2="155.31" y2="433.84" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-13" data-name="Nouvelle nuance de dégradé 2" x1="251.25" y1="462.28" x2="256.25" y2="462.28" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-14" data-name="Nouvelle nuance de dégradé 2" x1="352.19" y1="433.84" x2="367.59" y2="433.84" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-15" data-name="Nouvelle nuance de dégradé 2" x1="426.08" y1="356.14" x2="449.1" y2="356.14" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-16" data-name="Nouvelle nuance de dégradé 2" x1="453.13" y1="250" x2="478.94" y2="250" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-17" data-name="Nouvelle nuance de dégradé 2" x1="426.08" y1="143.86" x2="449.1" y2="143.86" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-18" data-name="Nouvelle nuance de dégradé 2" x1="352.19" y1="66.16" x2="367.59" y2="66.16" xlink:href="#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2"/>
+  </defs>
+  <g>
+    <path d="M254.31,174.35c20.6,0,37.37-16.76,37.37-37.37s-16.76-37.37-37.37-37.37-37.37,16.76-37.37,37.37,16.76,37.37,37.37,37.37ZM254.31,104.62c17.85,0,32.37,14.52,32.37,32.37s-14.52,32.37-32.37,32.37-32.37-14.52-32.37-32.37,14.52-32.37,32.37-32.37Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2);"/>
+    <path d="M275.39,192.51h-42.16c-14.54,0-26.36,11.83-26.36,26.36v68.72c0,11.19,7.12,21.2,17.72,24.9,3.67,1.28,6.14,4.92,6.14,9.04v76.35h5v-76.35c0-6.25-3.81-11.78-9.49-13.76-8.59-3-14.37-11.11-14.37-20.18v-68.72c0-11.78,9.58-21.36,21.36-21.36h42.16c11.78,0,21.36,9.58,21.36,21.36v68.72c0,9.07-5.78,17.18-14.37,20.18-5.68,1.98-9.49,7.51-9.49,13.76v76.35h5v-76.35c0-4.13,2.47-7.76,6.14-9.04,10.6-3.7,17.72-13.71,17.72-24.9v-68.72c0-14.54-11.83-26.36-26.36-26.36Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-2);"/>
+    <path d="M382.65,171.07c0-20.6-16.76-37.37-37.37-37.37s-37.37,16.76-37.37,37.37,16.76,37.37,37.37,37.37,37.37-16.76,37.37-37.37ZM312.91,171.07c0-17.85,14.52-32.37,32.37-32.37s32.37,14.52,32.37,32.37-14.52,32.37-32.37,32.37-32.37-14.52-32.37-32.37Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-3);"/>
+    <path d="M366.36,226.6h-45.57v5h45.57c11.78,0,21.36,9.58,21.36,21.36v51.68c0,9.07-5.78,17.18-14.37,20.18-5.68,1.98-9.49,7.51-9.49,13.76v59.3h5v-59.3c0-4.12,2.47-7.76,6.14-9.04,10.6-3.71,17.72-13.71,17.72-24.9v-51.68c0-14.54-11.83-26.36-26.36-26.36Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-4);"/>
+    <path d="M162.22,133.71c-20.6,0-37.37,16.76-37.37,37.37s16.76,37.37,37.37,37.37,37.37-16.76,37.37-37.37-16.76-37.37-37.37-37.37ZM162.22,203.44c-17.85,0-32.37-14.52-32.37-32.37s14.52-32.37,32.37-32.37,32.37,14.52,32.37,32.37-14.52,32.37-32.37,32.37Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-5);"/>
+    <path d="M114.78,252.96v51.68c0,11.19,7.12,21.2,17.72,24.9,3.67,1.28,6.14,4.92,6.14,9.04v59.3h5v-59.3c0-6.25-3.81-11.78-9.49-13.76-8.6-3-14.37-11.11-14.37-20.18v-51.68c0-11.78,9.58-21.36,21.36-21.36h45.57v-5h-45.57c-14.54,0-26.36,11.83-26.36,26.36Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-6);"/>
+    <path d="M253.75,50.62c1.38,0,2.5-1.12,2.5-2.5v-20.81c0-1.38-1.12-2.5-2.5-2.5s-2.5,1.12-2.5,2.5v20.81c0,1.38,1.12,2.5,2.5,2.5Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-7);"/>
+    <path d="M150.64,76.42c.46.8,1.3,1.25,2.17,1.25.42,0,.85-.11,1.25-.33,1.2-.69,1.61-2.22.92-3.42l-10.4-18.02c-.69-1.2-2.22-1.6-3.42-.92-1.2.69-1.61,2.22-.92,3.42l10.4,18.02Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-8);"/>
+    <path d="M80.17,146.89l-18.02-10.4c-1.19-.69-2.72-.28-3.42.92s-.28,2.72.92,3.42l18.02,10.4c.39.23.82.33,1.25.33.86,0,1.7-.45,2.17-1.25.69-1.2.28-2.72-.92-3.42Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-9);"/>
+    <path d="M51.87,247.5h-20.81c-1.38,0-2.5,1.12-2.5,2.5s1.12,2.5,2.5,2.5h20.81c1.38,0,2.5-1.12,2.5-2.5s-1.12-2.5-2.5-2.5Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-10);"/>
+    <path d="M77.67,348.78l-18.02,10.4c-1.2.69-1.61,2.22-.92,3.42.46.8,1.3,1.25,2.17,1.25.42,0,.85-.11,1.25-.33l18.02-10.4c1.2-.69,1.61-2.22.92-3.42s-2.22-1.61-3.42-.92Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-11);"/>
+    <path d="M154.06,422.67c-1.19-.69-2.72-.28-3.42.92l-10.4,18.02c-.69,1.2-.28,2.72.92,3.42.39.23.82.33,1.25.33.86,0,1.7-.45,2.17-1.25l10.4-18.02c.69-1.2.28-2.72-.92-3.42Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-12);"/>
+    <path d="M253.75,449.38c-1.38,0-2.5,1.12-2.5,2.5v20.81c0,1.38,1.12,2.5,2.5,2.5s2.5-1.12,2.5-2.5v-20.81c0-1.38-1.12-2.5-2.5-2.5Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-13);"/>
+    <path d="M356.86,423.58c-.69-1.2-2.22-1.61-3.42-.92-1.2.69-1.61,2.22-.92,3.42l10.4,18.02c.46.8,1.3,1.25,2.17,1.25.42,0,.85-.11,1.25-.33,1.2-.69,1.61-2.22.92-3.42l-10.4-18.02Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-14);"/>
+    <path d="M447.85,359.18l-18.02-10.4c-1.19-.69-2.72-.28-3.42.92-.69,1.2-.28,2.72.92,3.42l18.02,10.4c.39.23.82.33,1.25.33.86,0,1.7-.45,2.17-1.25.69-1.2.28-2.72-.92-3.42Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-15);"/>
+    <path d="M476.44,247.5h-20.81c-1.38,0-2.5,1.12-2.5,2.5s1.12,2.5,2.5,2.5h20.81c1.38,0,2.5-1.12,2.5-2.5s-1.12-2.5-2.5-2.5Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-16);"/>
+    <path d="M445.35,136.49l-18.02,10.4c-1.2.69-1.61,2.22-.92,3.42.46.8,1.3,1.25,2.17,1.25.42,0,.85-.11,1.25-.33l18.02-10.4c1.2-.69,1.61-2.22.92-3.42-.69-1.2-2.22-1.61-3.42-.92Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-17);"/>
+    <path d="M353.44,77.33c.39.23.82.33,1.25.33.86,0,1.7-.45,2.17-1.25l10.4-18.02c.69-1.2.28-2.72-.92-3.42-1.19-.69-2.72-.28-3.42.92l-10.4,18.02c-.69,1.2-.28,2.72.92,3.42Z" style="fill: url(#g_MesureClimatSocial_Nouvelle_nuance_de_dégradé_2-18);"/>
+  </g>
+  <g>
+    <g>
+      <path d="M244.31,174.35c-20.6,0-37.37-16.76-37.37-37.37s16.76-37.37,37.37-37.37,37.37,16.76,37.37,37.37-16.76,37.37-37.37,37.37ZM244.31,104.62c-17.85,0-32.37,14.52-32.37,32.37s14.52,32.37,32.37,32.37,32.37-14.52,32.37-32.37-14.52-32.37-32.37-32.37Z" style="fill: #0f192e;"/>
+      <path d="M267.89,397.88h-5v-76.35c0-6.25,3.81-11.78,9.49-13.76,8.59-3,14.37-11.11,14.37-20.18v-68.72c0-11.78-9.58-21.36-21.36-21.36h-42.16c-11.78,0-21.36,9.58-21.36,21.36v68.72c0,9.07,5.78,17.18,14.37,20.18,5.68,1.98,9.49,7.51,9.49,13.76v76.35h-5v-76.35c0-4.13-2.47-7.76-6.14-9.04-10.6-3.7-17.72-13.71-17.72-24.9v-68.72c0-14.54,11.83-26.36,26.36-26.36h42.16c14.54,0,26.36,11.83,26.36,26.36v68.72c0,11.19-7.12,21.2-17.72,24.9-3.67,1.28-6.14,4.92-6.14,9.04v76.35Z" style="fill: #0f192e;"/>
+      <g>
+        <path d="M335.28,208.44c-20.6,0-37.37-16.76-37.37-37.37s16.76-37.37,37.37-37.37,37.37,16.76,37.37,37.37-16.76,37.37-37.37,37.37ZM335.28,138.71c-17.85,0-32.37,14.52-32.37,32.37s14.52,32.37,32.37,32.37,32.37-14.52,32.37-32.37-14.52-32.37-32.37-32.37Z" style="fill: #0f192e;"/>
+        <path d="M358.86,397.88h-5v-59.3c0-6.25,3.81-11.78,9.49-13.76,8.6-3,14.37-11.11,14.37-20.18v-51.68c0-11.78-9.58-21.36-21.36-21.36h-45.57v-5h45.57c14.54,0,26.36,11.83,26.36,26.36v51.68c0,11.19-7.12,21.2-17.72,24.9-3.67,1.28-6.14,4.92-6.14,9.04v59.3Z" style="fill: #0f192e;"/>
+      </g>
+      <g>
+        <path d="M152.22,208.44c-20.6,0-37.37-16.76-37.37-37.37s16.76-37.37,37.37-37.37,37.37,16.76,37.37,37.37-16.76,37.37-37.37,37.37ZM152.22,138.71c-17.85,0-32.37,14.52-32.37,32.37s14.52,32.37,32.37,32.37,32.37-14.52,32.37-32.37-14.52-32.37-32.37-32.37Z" style="fill: #0f192e;"/>
+        <path d="M133.64,397.88h-5v-59.3c0-4.12-2.47-7.76-6.14-9.04-10.6-3.71-17.72-13.71-17.72-24.9v-51.68c0-14.54,11.83-26.36,26.36-26.36h45.57v5h-45.57c-11.78,0-21.36,9.58-21.36,21.36v51.68c0,9.07,5.78,17.18,14.37,20.18,5.68,1.98,9.49,7.51,9.49,13.76v59.3Z" style="fill: #0f192e;"/>
+      </g>
+    </g>
+    <path d="M243.75,50.62c-1.38,0-2.5-1.12-2.5-2.5v-20.81c0-1.38,1.12-2.5,2.5-2.5s2.5,1.12,2.5,2.5v20.81c0,1.38-1.12,2.5-2.5,2.5Z" style="fill: #0f192e;"/>
+    <path d="M142.81,77.67c-.86,0-1.7-.45-2.17-1.25l-10.4-18.02c-.69-1.2-.28-2.72.92-3.42,1.19-.69,2.72-.28,3.42.92l10.4,18.02c.69,1.2.28,2.72-.92,3.42-.39.23-.82.33-1.25.33Z" style="fill: #0f192e;"/>
+    <path d="M68.91,151.56c-.42,0-.85-.11-1.25-.33l-18.02-10.4c-1.2-.69-1.61-2.22-.92-3.42.69-1.2,2.22-1.61,3.42-.92l18.02,10.4c1.2.69,1.61,2.22.92,3.42-.46.8-1.3,1.25-2.17,1.25Z" style="fill: #0f192e;"/>
+    <path d="M41.87,252.5h-20.81c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5h20.81c1.38,0,2.5,1.12,2.5,2.5s-1.12,2.5-2.5,2.5Z" style="fill: #0f192e;"/>
+    <path d="M50.9,363.84c-.86,0-1.7-.45-2.17-1.25-.69-1.2-.28-2.72.92-3.42l18.02-10.4c1.19-.69,2.72-.28,3.42.92.69,1.2.28,2.72-.92,3.42l-18.02,10.4c-.39.23-.82.33-1.25.33Z" style="fill: #0f192e;"/>
+    <path d="M132.4,445.35c-.42,0-.85-.11-1.25-.33-1.2-.69-1.61-2.22-.92-3.42l10.4-18.02c.69-1.2,2.22-1.61,3.42-.92,1.2.69,1.61,2.22.92,3.42l-10.4,18.02c-.46.8-1.3,1.25-2.17,1.25Z" style="fill: #0f192e;"/>
+    <path d="M243.75,475.19c-1.38,0-2.5-1.12-2.5-2.5v-20.81c0-1.38,1.12-2.5,2.5-2.5s2.5,1.12,2.5,2.5v20.81c0,1.38-1.12,2.5-2.5,2.5Z" style="fill: #0f192e;"/>
+    <path d="M355.1,445.35c-.86,0-1.7-.45-2.17-1.25l-10.4-18.02c-.69-1.2-.28-2.72.92-3.42,1.19-.69,2.72-.28,3.42.92l10.4,18.02c.69,1.2.28,2.72-.92,3.42-.39.23-.82.33-1.25.33Z" style="fill: #0f192e;"/>
+    <path d="M436.6,363.84c-.42,0-.85-.11-1.25-.33l-18.02-10.4c-1.2-.69-1.61-2.22-.92-3.42.69-1.2,2.22-1.61,3.42-.92l18.02,10.4c1.2.69,1.61,2.22.92,3.42-.46.8-1.3,1.25-2.17,1.25Z" style="fill: #0f192e;"/>
+    <path d="M466.44,252.5h-20.81c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5h20.81c1.38,0,2.5,1.12,2.5,2.5s-1.12,2.5-2.5,2.5Z" style="fill: #0f192e;"/>
+    <path d="M418.59,151.56c-.86,0-1.7-.45-2.17-1.25-.69-1.2-.28-2.72.92-3.42l18.02-10.4c1.19-.69,2.72-.28,3.42.92.69,1.2.28,2.72-.92,3.42l-18.02,10.4c-.39.23-.82.33-1.25.33Z" style="fill: #0f192e;"/>
+    <path d="M344.69,77.67c-.42,0-.85-.11-1.25-.33-1.2-.69-1.61-2.22-.92-3.42l10.4-18.02c.69-1.2,2.22-1.6,3.42-.92,1.2.69,1.61,2.22.92,3.42l-10.4,18.02c-.46.8-1.3,1.25-2.17,1.25Z" style="fill: #0f192e;"/>
+  </g>
+  <g>
+    <g>
+      <path d="M244.31,174.35c-20.6,0-37.37-16.76-37.37-37.37s16.76-37.37,37.37-37.37,37.37,16.76,37.37,37.37-16.76,37.37-37.37,37.37ZM244.31,104.62c-17.85,0-32.37,14.52-32.37,32.37s14.52,32.37,32.37,32.37,32.37-14.52,32.37-32.37-14.52-32.37-32.37-32.37Z" style="fill: #0f192e;"/>
+      <path d="M267.89,397.88h-5v-76.35c0-6.25,3.81-11.78,9.49-13.76,8.59-3,14.37-11.11,14.37-20.18v-68.72c0-11.78-9.58-21.36-21.36-21.36h-42.16c-11.78,0-21.36,9.58-21.36,21.36v68.72c0,9.07,5.78,17.18,14.37,20.18,5.68,1.98,9.49,7.51,9.49,13.76v76.35h-5v-76.35c0-4.13-2.47-7.76-6.14-9.04-10.6-3.7-17.72-13.71-17.72-24.9v-68.72c0-14.54,11.83-26.36,26.36-26.36h42.16c14.54,0,26.36,11.83,26.36,26.36v68.72c0,11.19-7.12,21.2-17.72,24.9-3.67,1.28-6.14,4.92-6.14,9.04v76.35Z" style="fill: #0f192e;"/>
+      <g>
+        <path d="M335.28,208.44c-20.6,0-37.37-16.76-37.37-37.37s16.76-37.37,37.37-37.37,37.37,16.76,37.37,37.37-16.76,37.37-37.37,37.37ZM335.28,138.71c-17.85,0-32.37,14.52-32.37,32.37s14.52,32.37,32.37,32.37,32.37-14.52,32.37-32.37-14.52-32.37-32.37-32.37Z" style="fill: #0f192e;"/>
+        <path d="M358.86,397.88h-5v-59.3c0-6.25,3.81-11.78,9.49-13.76,8.6-3,14.37-11.11,14.37-20.18v-51.68c0-11.78-9.58-21.36-21.36-21.36h-45.57v-5h45.57c14.54,0,26.36,11.83,26.36,26.36v51.68c0,11.19-7.12,21.2-17.72,24.9-3.67,1.28-6.14,4.92-6.14,9.04v59.3Z" style="fill: #0f192e;"/>
+      </g>
+      <g>
+        <path d="M152.22,208.44c-20.6,0-37.37-16.76-37.37-37.37s16.76-37.37,37.37-37.37,37.37,16.76,37.37,37.37-16.76,37.37-37.37,37.37ZM152.22,138.71c-17.85,0-32.37,14.52-32.37,32.37s14.52,32.37,32.37,32.37,32.37-14.52,32.37-32.37-14.52-32.37-32.37-32.37Z" style="fill: #0f192e;"/>
+        <path d="M133.64,397.88h-5v-59.3c0-4.12-2.47-7.76-6.14-9.04-10.6-3.71-17.72-13.71-17.72-24.9v-51.68c0-14.54,11.83-26.36,26.36-26.36h45.57v5h-45.57c-11.78,0-21.36,9.58-21.36,21.36v51.68c0,9.07,5.78,17.18,14.37,20.18,5.68,1.98,9.49,7.51,9.49,13.76v59.3Z" style="fill: #0f192e;"/>
+      </g>
+    </g>
+    <path d="M243.75,50.62c-1.38,0-2.5-1.12-2.5-2.5v-20.81c0-1.38,1.12-2.5,2.5-2.5s2.5,1.12,2.5,2.5v20.81c0,1.38-1.12,2.5-2.5,2.5Z" style="fill: #0f192e;"/>
+    <path d="M142.81,77.67c-.86,0-1.7-.45-2.17-1.25l-10.4-18.02c-.69-1.2-.28-2.72.92-3.42,1.19-.69,2.72-.28,3.42.92l10.4,18.02c.69,1.2.28,2.72-.92,3.42-.39.23-.82.33-1.25.33Z" style="fill: #0f192e;"/>
+    <path d="M68.91,151.56c-.42,0-.85-.11-1.25-.33l-18.02-10.4c-1.2-.69-1.61-2.22-.92-3.42.69-1.2,2.22-1.61,3.42-.92l18.02,10.4c1.2.69,1.61,2.22.92,3.42-.46.8-1.3,1.25-2.17,1.25Z" style="fill: #0f192e;"/>
+    <path d="M41.87,252.5h-20.81c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5h20.81c1.38,0,2.5,1.12,2.5,2.5s-1.12,2.5-2.5,2.5Z" style="fill: #0f192e;"/>
+    <path d="M50.9,363.84c-.86,0-1.7-.45-2.17-1.25-.69-1.2-.28-2.72.92-3.42l18.02-10.4c1.19-.69,2.72-.28,3.42.92.69,1.2.28,2.72-.92,3.42l-18.02,10.4c-.39.23-.82.33-1.25.33Z" style="fill: #0f192e;"/>
+    <path d="M132.4,445.35c-.42,0-.85-.11-1.25-.33-1.2-.69-1.61-2.22-.92-3.42l10.4-18.02c.69-1.2,2.22-1.61,3.42-.92,1.2.69,1.61,2.22.92,3.42l-10.4,18.02c-.46.8-1.3,1.25-2.17,1.25Z" style="fill: #0f192e;"/>
+    <path d="M243.75,475.19c-1.38,0-2.5-1.12-2.5-2.5v-20.81c0-1.38,1.12-2.5,2.5-2.5s2.5,1.12,2.5,2.5v20.81c0,1.38-1.12,2.5-2.5,2.5Z" style="fill: #0f192e;"/>
+    <path d="M355.1,445.35c-.86,0-1.7-.45-2.17-1.25l-10.4-18.02c-.69-1.2-.28-2.72.92-3.42,1.19-.69,2.72-.28,3.42.92l10.4,18.02c.69,1.2.28,2.72-.92,3.42-.39.23-.82.33-1.25.33Z" style="fill: #0f192e;"/>
+    <path d="M436.6,363.84c-.42,0-.85-.11-1.25-.33l-18.02-10.4c-1.2-.69-1.61-2.22-.92-3.42.69-1.2,2.22-1.61,3.42-.92l18.02,10.4c1.2.69,1.61,2.22.92,3.42-.46.8-1.3,1.25-2.17,1.25Z" style="fill: #0f192e;"/>
+    <path d="M466.44,252.5h-20.81c-1.38,0-2.5-1.12-2.5-2.5s1.12-2.5,2.5-2.5h20.81c1.38,0,2.5,1.12,2.5,2.5s-1.12,2.5-2.5,2.5Z" style="fill: #0f192e;"/>
+    <path d="M418.59,151.56c-.86,0-1.7-.45-2.17-1.25-.69-1.2-.28-2.72.92-3.42l18.02-10.4c1.19-.69,2.72-.28,3.42.92.69,1.2.28,2.72-.92,3.42l-18.02,10.4c-.39.23-.82.33-1.25.33Z" style="fill: #0f192e;"/>
+    <path d="M344.69,77.67c-.42,0-.85-.11-1.25-.33-1.2-.69-1.61-2.22-.92-3.42l10.4-18.02c.69-1.2,2.22-1.6,3.42-.92,1.2.69,1.61,2.22.92,3.42l-10.4,18.02c-.46.8-1.3,1.25-2.17,1.25Z" style="fill: #0f192e;"/>
+  </g>
+</svg>`,
+  Progression: `<svg data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="g_Progression_Nouvelle_nuance_de_dégradé_2" data-name="Nouvelle nuance de dégradé 2" x1="38" y1="250" x2="472" y2="250" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00d85d"/>
+      <stop offset="1" stop-color="#0ebdb3"/>
+    </linearGradient>
+  </defs>
+  <path d="M80.86,327.4V35.71c0-1.5,1.22-2.71,2.71-2.71s2.71,1.22,2.71,2.71v374.4l137.27-137.28c.42-.42,1.14-.67,1.92-.67s1.5.25,1.92.67l74.8,74.8,141.63-141.71h-22.17c-1.5,0-2.71-1.22-2.71-2.71s1.22-2.71,2.71-2.71h28.3c1.5,0,2.71,1.22,2.71,2.71v28.31c0,1.5-1.22,2.71-2.71,2.71s-2.71-1.22-2.71-2.71v-21.35l-143.14,143.22c-.69.69-1.5.79-1.92.79s-1.23-.1-1.92-.8l-74.8-74.79-139.19,139.19v.93h383c1.5,0,2.71,1.22,2.71,2.71s-1.22,2.71-2.71,2.71H86.29v40.14c0,1.5-1.22,2.71-2.71,2.71s-2.71-1.22-2.71-2.71v-40.14h-40.14c-1.5,0-2.71-1.22-2.71-2.71s1.22-2.71,2.71-2.71h40.14v-91.31Z" style="fill: url(#g_Progression_Nouvelle_nuance_de_dégradé_2);"/>
+  <path d="M70.86,327.4V35.71c0-1.5,1.22-2.71,2.71-2.71s2.71,1.22,2.71,2.71v374.4l137.27-137.28c.42-.42,1.14-.67,1.92-.67s1.5.25,1.92.67l74.8,74.8,141.63-141.71h-22.17c-1.5,0-2.71-1.22-2.71-2.71s1.22-2.71,2.71-2.71h28.3c1.5,0,2.71,1.22,2.71,2.71v28.31c0,1.5-1.22,2.71-2.71,2.71s-2.71-1.22-2.71-2.71v-21.35l-143.14,143.22c-.69.69-1.5.79-1.92.79s-1.23-.1-1.92-.8l-74.8-74.79-139.19,139.19v.93h383c1.5,0,2.71,1.22,2.71,2.71s-1.22,2.71-2.71,2.71H76.29v40.14c0,1.5-1.22,2.71-2.71,2.71s-2.71-1.22-2.71-2.71v-40.14H30.71c-1.5,0-2.71-1.22-2.71-2.71s1.22-2.71,2.71-2.71h40.14v-91.31Z" style="fill: #0f192e;"/>
+</svg>`,
+  Attention: `<svg data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="g_Attention_Nouvelle_nuance_de_dégradé_2" data-name="Nouvelle nuance de dégradé 2" x1="52.88" y1="250" x2="457.12" y2="250" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00d85d"/>
+      <stop offset="1" stop-color="#0ebdb3"/>
+    </linearGradient>
+    <linearGradient id="g_Attention_Nouvelle_nuance_de_dégradé_2-2" data-name="Nouvelle nuance de dégradé 2" x1="445.56" y1="321.87" x2="477.96" y2="321.87" xlink:href="#g_Attention_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_Attention_Nouvelle_nuance_de_dégradé_2-3" data-name="Nouvelle nuance de dégradé 2" x1="421.8" y1="222.77" x2="450.74" y2="222.77" xlink:href="#g_Attention_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_Attention_Nouvelle_nuance_de_dégradé_2-4" data-name="Nouvelle nuance de dégradé 2" x1="355.12" y1="149.69" x2="374.17" y2="149.69" xlink:href="#g_Attention_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_Attention_Nouvelle_nuance_de_dégradé_2-5" data-name="Nouvelle nuance de dégradé 2" x1="32.04" y1="321.87" x2="64.44" y2="321.87" xlink:href="#g_Attention_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_Attention_Nouvelle_nuance_de_dégradé_2-6" data-name="Nouvelle nuance de dégradé 2" x1="59.26" y1="222.77" x2="88.2" y2="222.77" xlink:href="#g_Attention_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_Attention_Nouvelle_nuance_de_dégradé_2-7" data-name="Nouvelle nuance de dégradé 2" x1="135.83" y1="149.69" x2="154.88" y2="149.69" xlink:href="#g_Attention_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_Attention_Nouvelle_nuance_de_dégradé_2-8" data-name="Nouvelle nuance de dégradé 2" x1="243.89" y1="366.6" x2="266.11" y2="366.6" xlink:href="#g_Attention_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_Attention_Nouvelle_nuance_de_dégradé_2-9" data-name="Nouvelle nuance de dégradé 2" x1="237.28" y1="253.01" x2="272.71" y2="253.01" xlink:href="#g_Attention_Nouvelle_nuance_de_dégradé_2"/>
+  </defs>
+  <g>
+    <path d="M436.92,427.71H73.08c-7.29,0-13.82-3.77-17.46-10.08-3.65-6.31-3.65-13.85,0-20.17L237.54,82.37c3.65-6.31,10.17-10.08,17.46-10.08,0,0,0,0,0,0,7.29,0,13.82,3.77,17.46,10.08l181.92,315.09c3.65,6.31,3.65,13.85,0,20.17-3.65,6.31-10.17,10.08-17.46,10.08ZM239.7,83.62l2.17,1.25L59.95,399.96c-2.74,4.75-2.74,10.42,0,15.17,2.74,4.75,7.65,7.58,13.13,7.58h363.84c5.48,0,10.39-2.83,13.13-7.58,2.74-4.75,2.74-10.42,0-15.17L268.13,84.87c-2.74-4.75-7.65-7.58-13.13-7.58s-10.39,2.83-13.13,7.58l-2.17-1.25Z" style="fill: url(#g_Attention_Nouvelle_nuance_de_dégradé_2);"/>
+    <g>
+      <path d="M475.46,324.57h-.04l-27.4-.41c-1.38-.02-2.48-1.16-2.46-2.54.02-1.37,1.14-2.46,2.5-2.46h.04l27.4.41c1.38.02,2.48,1.16,2.46,2.54-.02,1.37-1.14,2.46-2.5,2.46Z" style="fill: url(#g_Attention_Nouvelle_nuance_de_dégradé_2-2);"/>
+      <path d="M424.31,231.94c-.88,0-1.73-.46-2.19-1.28-.67-1.21-.24-2.73.97-3.4l23.93-13.35c1.21-.67,2.73-.24,3.4.97.67,1.21.24,2.73-.97,3.4l-23.93,13.35c-.39.21-.8.32-1.22.32Z" style="fill: url(#g_Attention_Nouvelle_nuance_de_dégradé_2-3);"/>
+      <path d="M357.62,163.95c-.44,0-.88-.11-1.28-.35-1.19-.71-1.57-2.24-.86-3.43l14.05-23.52c.71-1.18,2.24-1.57,3.43-.86,1.19.71,1.57,2.24.86,3.43l-14.05,23.52c-.47.78-1.3,1.22-2.15,1.22Z" style="fill: url(#g_Attention_Nouvelle_nuance_de_dégradé_2-4);"/>
+    </g>
+    <g>
+      <path d="M34.54,324.57c-1.36,0-2.48-1.09-2.5-2.46-.02-1.38,1.08-2.52,2.46-2.54l27.4-.41c1.36.02,2.52,1.08,2.54,2.46.02,1.38-1.08,2.52-2.46,2.54l-27.4.41h-.04Z" style="fill: url(#g_Attention_Nouvelle_nuance_de_dégradé_2-5);"/>
+      <path d="M85.69,231.94c-.41,0-.83-.1-1.22-.32l-23.93-13.35c-1.21-.67-1.64-2.2-.97-3.4.67-1.21,2.2-1.64,3.4-.97l23.93,13.35c1.21.67,1.64,2.2.97,3.4-.46.82-1.31,1.28-2.19,1.28Z" style="fill: url(#g_Attention_Nouvelle_nuance_de_dégradé_2-6);"/>
+      <path d="M152.38,163.95c-.85,0-1.68-.43-2.15-1.22l-14.05-23.52c-.71-1.19-.32-2.72.86-3.43,1.19-.71,2.72-.32,3.43.86l14.05,23.52c.71,1.19.32,2.72-.86,3.43-.4.24-.84.35-1.28.35Z" style="fill: url(#g_Attention_Nouvelle_nuance_de_dégradé_2-7);"/>
+    </g>
+    <path d="M255,377.71c-6.13,0-11.11-4.98-11.11-11.11s4.98-11.11,11.11-11.11,11.11,4.98,11.11,11.11-4.98,11.11-11.11,11.11ZM255,360.49c-3.37,0-6.11,2.74-6.11,6.11s2.74,6.11,6.11,6.11,6.11-2.74,6.11-6.11-2.74-6.11-6.11-6.11Z" style="fill: url(#g_Attention_Nouvelle_nuance_de_dégradé_2-8);"/>
+    <path d="M255,330.33c-3.65,0-6.47-2.53-6.86-6.16l-10.75-128.92c-.54-4.93,1.08-9.94,4.43-13.68,3.36-3.74,8.16-5.88,13.19-5.88s9.83,2.14,13.19,5.88c3.36,3.74,4.97,8.75,4.43,13.74l-10.74,128.79s0,.04,0,.06c-.39,3.62-3.22,6.16-6.86,6.16ZM255,180.69c-3.61,0-7.06,1.54-9.46,4.22-2.41,2.68-3.57,6.28-3.18,9.86l10.75,128.92c.17,1.51,1.49,1.63,1.89,1.63s1.71-.12,1.89-1.67l10.74-128.82c.4-3.65-.76-7.24-3.17-9.93s-5.86-4.22-9.46-4.22ZM259.38,323.9h0,0Z" style="fill: url(#g_Attention_Nouvelle_nuance_de_dégradé_2-9);"/>
+  </g>
+  <g>
+    <path d="M426.92,427.71H63.08c-7.29,0-13.82-3.77-17.46-10.08-3.65-6.31-3.65-13.85,0-20.17L227.54,82.37c3.65-6.31,10.17-10.08,17.46-10.08s13.82,3.77,17.46,10.08l181.92,315.09c3.65,6.31,3.65,13.85,0,20.17-3.65,6.31-10.17,10.08-17.46,10.08ZM245,77.29c-5.48,0-10.39,2.83-13.13,7.58h0L49.95,399.96c-2.74,4.75-2.74,10.42,0,15.17,2.74,4.75,7.65,7.58,13.13,7.58h363.84c5.48,0,10.39-2.83,13.13-7.58,2.74-4.75,2.74-10.42,0-15.17L258.13,84.87c-2.74-4.75-7.65-7.58-13.13-7.58ZM229.7,83.62h0,0Z" style="fill: #0f192e;"/>
+    <g>
+      <path d="M465.46,324.57h-.04l-27.4-.41c-1.38-.02-2.48-1.16-2.46-2.54.02-1.37,1.14-2.46,2.5-2.46h.04l27.4.41c1.38.02,2.48,1.16,2.46,2.54-.02,1.37-1.14,2.46-2.5,2.46Z" style="fill: #0f192e;"/>
+      <path d="M414.31,231.94c-.88,0-1.73-.46-2.19-1.28-.67-1.21-.24-2.73.97-3.4l23.93-13.35c1.21-.67,2.73-.24,3.4.97.67,1.21.24,2.73-.97,3.4l-23.93,13.35c-.39.21-.8.32-1.22.32Z" style="fill: #0f192e;"/>
+      <path d="M347.62,163.95c-.44,0-.88-.11-1.28-.35-1.19-.71-1.57-2.24-.86-3.43l14.05-23.52c.71-1.18,2.24-1.57,3.43-.86,1.19.71,1.57,2.24.86,3.43l-14.05,23.52c-.47.78-1.3,1.22-2.15,1.22Z" style="fill: #0f192e;"/>
+    </g>
+    <g>
+      <path d="M24.54,324.57c-1.36,0-2.48-1.09-2.5-2.46-.02-1.38,1.08-2.52,2.46-2.54l27.4-.41c1.36.02,2.52,1.08,2.54,2.46.02,1.38-1.08,2.52-2.46,2.54l-27.4.41h-.04Z" style="fill: #0f192e;"/>
+      <path d="M75.69,231.94c-.41,0-.83-.1-1.22-.32l-23.93-13.35c-1.21-.67-1.64-2.2-.97-3.4.67-1.21,2.2-1.64,3.4-.97l23.93,13.35c1.21.67,1.64,2.2.97,3.4-.46.82-1.31,1.28-2.19,1.28Z" style="fill: #0f192e;"/>
+      <path d="M142.38,163.95c-.85,0-1.68-.43-2.15-1.22l-14.05-23.52c-.71-1.19-.32-2.72.86-3.43,1.19-.71,2.72-.32,3.43.86l14.05,23.52c.71,1.19.32,2.72-.86,3.43-.4.24-.84.35-1.28.35Z" style="fill: #0f192e;"/>
+    </g>
+    <path d="M245,377.71c-6.13,0-11.11-4.98-11.11-11.11s4.98-11.11,11.11-11.11,11.11,4.98,11.11,11.11-4.98,11.11-11.11,11.11ZM245,360.49c-3.37,0-6.11,2.74-6.11,6.11s2.74,6.11,6.11,6.11,6.11-2.74,6.11-6.11-2.74-6.11-6.11-6.11Z" style="fill: #0f192e;"/>
+    <path d="M245,330.33c-3.65,0-6.47-2.53-6.86-6.16l-10.75-128.92c-.54-4.93,1.08-9.94,4.43-13.68,3.35-3.74,8.16-5.88,13.19-5.88s9.83,2.14,13.19,5.88c3.35,3.74,4.97,8.75,4.42,13.74l-10.74,128.79s0,.04,0,.06c-.39,3.62-3.22,6.16-6.86,6.16ZM245,180.69c-3.61,0-7.06,1.54-9.46,4.22s-3.57,6.28-3.18,9.86l10.75,128.92c.17,1.51,1.49,1.63,1.89,1.63s1.71-.12,1.89-1.67l10.74-128.82c.4-3.65-.76-7.24-3.17-9.93-2.41-2.68-5.86-4.22-9.46-4.22ZM249.38,323.9h0,0Z" style="fill: #0f192e;"/>
+  </g>
+</svg>`,
+  PeopleGood: `<svg data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="g_PeopleGood_Nouvelle_nuance_de_dégradé_2" data-name="Nouvelle nuance de dégradé 2" x1="52.5" y1="250" x2="457.5" y2="250" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00d85d"/>
+      <stop offset="1" stop-color="#0ebdb3"/>
+    </linearGradient>
+    <linearGradient id="g_PeopleGood_Nouvelle_nuance_de_dégradé_2-2" data-name="Nouvelle nuance de dégradé 2" x1="151.19" y1="193.52" x2="221.37" y2="193.52" xlink:href="#g_PeopleGood_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_PeopleGood_Nouvelle_nuance_de_dégradé_2-3" data-name="Nouvelle nuance de dégradé 2" x1="286.49" y1="193.52" x2="356.67" y2="193.52" xlink:href="#g_PeopleGood_Nouvelle_nuance_de_dégradé_2"/>
+    <linearGradient id="g_PeopleGood_Nouvelle_nuance_de_dégradé_2-4" data-name="Nouvelle nuance de dégradé 2" x1="136.59" y1="326.3" x2="373.41" y2="326.3" xlink:href="#g_PeopleGood_Nouvelle_nuance_de_dégradé_2"/>
+  </defs>
+  <g>
+    <path d="M255,452.5c-111.66,0-202.5-90.84-202.5-202.5S143.34,47.5,255,47.5h156.8c25.2,0,45.7,20.5,45.7,45.7v156.8c0,111.66-90.84,202.5-202.5,202.5ZM255,52.5c-108.9,0-197.5,88.6-197.5,197.5s88.6,197.5,197.5,197.5,197.5-88.6,197.5-197.5V93.2c0-22.44-18.26-40.7-40.7-40.7h-156.8Z" style="fill: url(#g_PeopleGood_Nouvelle_nuance_de_dégradé_2);"/>
+    <path d="M221.37,211.07h-5c0-16.59-13.5-30.09-30.09-30.09s-30.09,13.5-30.09,30.09h-5c0-19.35,15.74-35.09,35.09-35.09s35.09,15.74,35.09,35.09Z" style="fill: url(#g_PeopleGood_Nouvelle_nuance_de_dégradé_2-2);"/>
+    <path d="M356.67,211.07h-5c0-16.59-13.5-30.09-30.09-30.09s-30.09,13.5-30.09,30.09h-5c0-19.35,15.74-35.09,35.09-35.09s35.09,15.74,35.09,35.09Z" style="fill: url(#g_PeopleGood_Nouvelle_nuance_de_dégradé_2-3);"/>
+    <path d="M255,372.5c-55.48,0-104.17-37.47-118.41-91.11l4.83-1.28c13.65,51.46,60.36,87.39,113.57,87.39s99.92-35.94,113.57-87.39l4.83,1.28c-14.23,53.65-62.92,91.11-118.41,91.11Z" style="fill: url(#g_PeopleGood_Nouvelle_nuance_de_dégradé_2-4);"/>
+  </g>
+  <g>
+    <path d="M245,452.5c-111.66,0-202.5-90.84-202.5-202.5S133.34,47.5,245,47.5h156.8c25.2,0,45.7,20.5,45.7,45.7v156.8c0,111.66-90.84,202.5-202.5,202.5ZM245,52.5c-108.9,0-197.5,88.6-197.5,197.5s88.6,197.5,197.5,197.5,197.5-88.6,197.5-197.5V93.2c0-22.44-18.26-40.7-40.7-40.7h-156.8Z" style="fill: #0f192e;"/>
+    <path d="M211.37,211.07h-5c0-16.59-13.5-30.09-30.09-30.09s-30.09,13.5-30.09,30.09h-5c0-19.35,15.74-35.09,35.09-35.09s35.09,15.74,35.09,35.09Z" style="fill: #0f192e;"/>
+    <path d="M346.67,211.07h-5c0-16.59-13.5-30.09-30.09-30.09s-30.09,13.5-30.09,30.09h-5c0-19.35,15.74-35.09,35.09-35.09s35.09,15.74,35.09,35.09Z" style="fill: #0f192e;"/>
+    <path d="M245,372.5c-55.48,0-104.17-37.47-118.41-91.11l4.83-1.28c13.65,51.46,60.36,87.39,113.57,87.39s99.92-35.94,113.57-87.39l4.83,1.28c-14.23,53.65-62.92,91.11-118.41,91.11Z" style="fill: #0f192e;"/>
+  </g>
+</svg>`,
+  Loupe: `<svg data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="g_Loupe_Nouvelle_nuance_de_dégradé_2" data-name="Nouvelle nuance de dégradé 2" x1="388.84" y1="184.12" x2="139.1" y2="300.57" gradientTransform="translate(382.26 -79.1) rotate(155) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00d85d"/>
+      <stop offset="1" stop-color="#0ebdb3"/>
+    </linearGradient>
+  </defs>
+  <path d="M131.89,475.13c-1.4,0-2.81-.25-4.17-.74-3.05-1.11-5.49-3.34-6.86-6.29-1.37-2.94-1.52-6.25-.4-9.3l61.75-169.66c-27.33-14.08-48.6-36.19-61.59-64.06-15.53-33.3-17.14-70.7-4.54-105.32,12.6-34.62,37.88-62.23,71.17-77.76,33.3-15.53,70.7-17.14,105.32-4.54,34.62,12.6,62.23,37.88,77.76,71.17,32.1,68.85,2.21,150.98-66.64,183.08-31.09,14.5-66.14,16.84-98.96,6.64l-61.42,168.76c-1.11,3.05-3.34,5.49-6.29,6.86-1.63.76-3.38,1.15-5.13,1.15ZM245.27,34.06c-19.1,0-38.11,4.17-55.91,12.47-32.09,14.96-56.45,41.58-68.59,74.94-12.14,33.36-10.59,69.41,4.37,101.5,12.83,27.51,34.02,49.19,61.28,62.7,1.14.57,1.67,1.9,1.24,3.09l-62.51,171.75c-.66,1.8-.57,3.74.24,5.48.81,1.73,2.24,3.05,4.04,3.7h0c1.8.66,3.74.57,5.48-.24,1.73-.81,3.05-2.24,3.7-4.04l62.25-171.02c.46-1.27,1.85-1.94,3.13-1.52,32.26,10.63,66.92,8.61,97.59-5.69,66.35-30.94,95.16-110.09,64.22-176.44-14.96-32.09-41.58-56.45-74.94-68.59-14.86-5.41-30.25-8.1-45.59-8.1ZM245.65,285.3c-44.63,0-87.45-25.33-107.53-68.38-27.6-59.19-1.9-129.8,57.29-157.4,28.63-13.35,60.78-14.74,90.55-3.9,29.76,10.83,53.5,32.56,66.85,61.19,13.35,28.63,14.74,60.79,3.9,90.55-10.83,29.76-32.56,53.5-61.19,66.85-16.14,7.53-33.14,11.09-49.88,11.09ZM142.65,214.8c26.44,56.69,94.06,81.31,150.76,54.87,27.42-12.79,48.23-35.53,58.61-64.03,10.38-28.51,9.05-59.31-3.74-86.72s-35.53-48.23-64.03-58.61c-28.51-10.38-59.31-9.05-86.72,3.74-56.69,26.44-81.31,94.06-54.87,150.76Z" style="fill: url(#g_Loupe_Nouvelle_nuance_de_dégradé_2);"/>
+  <path d="M140.95,470.9c-1.4,0-2.81-.25-4.17-.74-3.05-1.11-5.49-3.34-6.86-6.29-1.37-2.94-1.52-6.25-.41-9.3l61.75-169.66c-27.33-14.08-48.6-36.19-61.59-64.06-32.1-68.85-2.21-150.98,66.64-183.08,33.3-15.53,70.7-17.14,105.32-4.54,34.62,12.6,62.23,37.88,77.76,71.18,15.53,33.3,17.14,70.7,4.54,105.32-12.6,34.62-37.88,62.23-71.17,77.76-31.1,14.5-66.14,16.83-98.96,6.64l-61.42,168.76c-1.11,3.05-3.34,5.49-6.29,6.86-1.63.76-3.38,1.15-5.13,1.15ZM254.33,29.83c-19.1,0-38.11,4.17-55.91,12.47-66.35,30.94-95.16,110.09-64.22,176.44,12.83,27.51,34.02,49.19,61.28,62.7l2,.99-63.27,173.85c-.66,1.8-.57,3.74.24,5.48.81,1.73,2.24,3.05,4.04,3.7h0c1.8.66,3.74.57,5.47-.24,1.73-.81,3.05-2.24,3.7-4.04l63.07-173.3,2.3.76c32.27,10.63,66.93,8.61,97.59-5.69,32.09-14.96,56.45-41.58,68.59-74.94,12.14-33.36,10.59-69.41-4.37-101.5-14.96-32.09-41.58-56.45-74.94-68.59-14.86-5.41-30.25-8.1-45.59-8.1ZM254.71,281.11c-13.68,0-27.41-2.4-40.67-7.23-29.76-10.83-53.5-32.56-66.85-61.19-13.35-28.63-14.74-60.78-3.9-90.55,10.83-29.76,32.56-53.5,61.19-66.85,59.19-27.6,129.8-1.9,157.4,57.29,27.6,59.19,1.9,129.8-57.29,157.4-15.88,7.4-32.84,11.13-49.88,11.13ZM254.36,49.2c-16.03,0-32.31,3.41-47.77,10.62-27.42,12.79-48.23,35.53-58.61,64.03-10.38,28.51-9.05,59.31,3.74,86.72h0c12.79,27.42,35.53,48.23,64.03,58.61,28.51,10.38,59.31,9.05,86.72-3.74,56.69-26.44,81.31-94.06,54.87-150.76-19.23-41.23-60.24-65.49-102.99-65.49Z" style="fill: #0f192e;"/>
+</svg>`,
+  CadenaClose: `<svg data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="g_CadenaClose_Nouvelle_nuance_de_dégradé_2" data-name="Nouvelle nuance de dégradé 2" x1="102.19" y1="244.58" x2="417.81" y2="244.58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00d85d"/>
+      <stop offset="1" stop-color="#0ebdb3"/>
+    </linearGradient>
+    <linearGradient id="g_CadenaClose_Nouvelle_nuance_de_dégradé_2-2" data-name="Nouvelle nuance de dégradé 2" x1="221.26" y1="344.97" x2="298.74" y2="344.97" xlink:href="#g_CadenaClose_Nouvelle_nuance_de_dégradé_2"/>
+  </defs>
+  <g>
+    <path d="M404.95,482.08H115.05c-7.09,0-12.85-5.77-12.85-12.85v-248.49c0-7.09,5.77-12.85,12.85-12.85h21.73l-16.52-37.59c-25.82-58.76.98-127.56,59.74-153.38,58.76-25.81,127.56.98,153.39,59.74l24.43,55.61c2.85,6.49-.11,14.09-6.6,16.94-6.49,2.84-14.09-.11-16.94-6.6l-24.43-55.61c-9.73-22.14-27.53-39.18-50.13-47.98-22.6-8.8-47.24-8.29-69.37,1.44-45.78,20.11-66.66,73.72-46.54,119.51l21.06,47.93h240.1c7.09,0,12.85,5.77,12.85,12.85v248.49c0,7.09-5.77,12.85-12.85,12.85ZM115.05,212.88c-4.33,0-7.85,3.52-7.85,7.85v248.49c0,4.33,3.52,7.85,7.85,7.85h289.91c4.33,0,7.85-3.52,7.85-7.85v-248.49c0-4.33-3.52-7.85-7.85-7.85h-241.73c-.99,0-1.89-.59-2.29-1.49l-21.72-49.42c-21.22-48.31.81-104.87,49.11-126.09,23.36-10.27,49.36-10.81,73.2-1.52,23.84,9.29,42.63,27.27,52.89,50.63l24.43,55.61c1.74,3.96,6.39,5.77,10.35,4.03,3.96-1.74,5.77-6.39,4.03-10.35l-24.43-55.61C304.09,22.43,238.24-3.22,182.01,21.49c-56.23,24.71-81.88,90.56-57.17,146.79l18.06,41.09c.34.77.27,1.67-.2,2.37-.46.71-1.25,1.13-2.09,1.13h-25.55Z" style="fill: url(#g_CadenaClose_Nouvelle_nuance_de_dégradé_2);"/>
+    <path d="M260,410.42c-16.01,0-29.03-13.02-29.03-29.03v-37.5c-6.57-7.47-10.08-17.34-9.67-27.25.83-20.22,17.34-36.51,37.58-37.09,10.5-.33,20.53,3.56,28.12,10.94,7.57,7.36,11.74,17.23,11.74,27.78,0,9.51-3.44,18.57-9.71,25.64v37.48c0,16.01-13.02,29.03-29.03,29.03ZM260.09,284.53c-.36,0-.71,0-1.07.02-17.63.5-32,14.69-32.73,32.3-.37,8.92,2.91,17.81,9.01,24.38.43.46.67,1.07.67,1.7v38.46c0,13.25,10.78,24.03,24.03,24.03s24.03-10.78,24.03-24.03v-38.44c0-.63.24-1.24.67-1.71,5.83-6.24,9.03-14.4,9.03-22.97,0-9.19-3.63-17.79-10.23-24.2-6.36-6.18-14.64-9.54-23.42-9.54Z" style="fill: url(#g_CadenaClose_Nouvelle_nuance_de_dégradé_2-2);"/>
+  </g>
+  <g>
+    <path d="M394.95,482.08H105.05c-7.09,0-12.85-5.77-12.85-12.85v-248.49c0-7.09,5.77-12.85,12.85-12.85h21.73l-16.52-37.59c-25.82-58.76.98-127.56,59.74-153.38,58.76-25.81,127.57.98,153.39,59.74l24.43,55.61c2.85,6.49-.11,14.09-6.6,16.94-6.5,2.85-14.09-.11-16.94-6.6l-24.43-55.61c-9.73-22.14-27.53-39.18-50.13-47.98-22.6-8.8-47.24-8.29-69.37,1.44-45.78,20.11-66.66,73.72-46.54,119.51l21.06,47.93h240.1c7.09,0,12.85,5.77,12.85,12.85v248.49c0,7.09-5.77,12.85-12.85,12.85ZM105.05,212.88c-4.33,0-7.85,3.52-7.85,7.85v248.49c0,4.33,3.52,7.85,7.85,7.85h289.91c4.33,0,7.85-3.52,7.85-7.85v-248.49c0-4.33-3.52-7.85-7.85-7.85h-243.36l-22.38-50.92c-21.22-48.31.81-104.87,49.11-126.09,23.36-10.27,49.36-10.81,73.2-1.52,23.84,9.29,42.63,27.27,52.89,50.63l24.43,55.61c1.74,3.96,6.39,5.77,10.35,4.03,3.96-1.74,5.77-6.39,4.03-10.35l-24.43-55.61C294.09,22.43,228.24-3.22,172,21.49c-56.23,24.71-81.88,90.56-57.17,146.79l19.6,44.6h-29.38Z" style="fill: #0f192e;"/>
+    <path d="M250,410.42c-16.01,0-29.03-13.02-29.03-29.03v-37.5c-6.57-7.47-10.09-17.34-9.67-27.25.83-20.22,17.34-36.51,37.58-37.09,10.5-.33,20.53,3.56,28.12,10.94,7.57,7.36,11.74,17.23,11.74,27.78,0,9.5-3.44,18.57-9.71,25.64v37.48c0,16.01-13.02,29.03-29.03,29.03ZM250.09,284.53c-.36,0-.71,0-1.07.02-17.63.5-32,14.69-32.73,32.3-.37,8.92,2.91,17.81,9.01,24.38l.67.72v39.44c0,13.25,10.78,24.03,24.03,24.03s24.03-10.78,24.03-24.03v-39.43l.67-.72c5.83-6.24,9.03-14.4,9.03-22.97,0-9.19-3.63-17.79-10.23-24.2-6.36-6.18-14.64-9.54-23.42-9.54Z" style="fill: #0f192e;"/>
+  </g>
+</svg>`,
+  CadenasOpen: `<svg data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+  <defs>
+    <linearGradient id="g_CadenasOpen_Nouvelle_nuance_de_dégradé_2" data-name="Nouvelle nuance de dégradé 2" x1="102.19" y1="262.84" x2="417.81" y2="262.84" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00d85d"/>
+      <stop offset="1" stop-color="#0ebdb3"/>
+    </linearGradient>
+    <linearGradient id="g_CadenasOpen_Nouvelle_nuance_de_dégradé_2-2" data-name="Nouvelle nuance de dégradé 2" x1="221.26" y1="344.98" x2="298.74" y2="344.98" xlink:href="#g_CadenasOpen_Nouvelle_nuance_de_dégradé_2"/>
+  </defs>
+  <g>
+    <path d="M404.96,482.08H115.05c-7.09,0-12.85-5.77-12.85-12.85v-248.49c0-7.09,5.77-12.85,12.85-12.85h28.56v-47.89c0-64.18,52.21-116.39,116.39-116.39s116.39,52.21,116.39,116.39v47.89h28.56c7.09,0,12.85,5.77,12.85,12.85v248.49c0,7.09-5.77,12.85-12.85,12.85ZM115.05,212.88c-4.33,0-7.85,3.52-7.85,7.85v248.49c0,4.33,3.52,7.85,7.85,7.85h289.91c4.33,0,7.85-3.52,7.85-7.85v-248.49c0-4.33-3.52-7.85-7.85-7.85h-31.06c-1.38,0-2.5-1.12-2.5-2.5v-50.39c0-61.42-49.97-111.39-111.39-111.39s-111.39,49.97-111.39,111.39v50.39c0,1.38-1.12,2.5-2.5,2.5h-31.06ZM353.19,212.88h-186.37c-1.38,0-2.5-1.12-2.5-2.5v-50.39c0-52.76,42.92-95.68,95.69-95.68s95.69,42.92,95.69,95.68v50.39c0,1.38-1.12,2.5-2.5,2.5ZM169.31,207.88h181.37v-47.89c0-50-40.68-90.68-90.69-90.68s-90.69,40.68-90.69,90.68v47.89Z" style="fill: url(#g_CadenasOpen_Nouvelle_nuance_de_dégradé_2);"/>
+    <path d="M260,410.42c-16.01,0-29.03-13.02-29.03-29.03v-37.5c-6.57-7.47-10.08-17.34-9.67-27.24.84-20.22,17.34-36.52,37.58-37.1h0c10.58-.27,20.59,3.62,28.12,10.94,7.57,7.36,11.74,17.23,11.74,27.78,0,9.5-3.44,18.57-9.71,25.64v37.48c0,16.01-13.02,29.03-29.03,29.03ZM259.01,284.55c-17.62.51-31.99,14.7-32.72,32.3-.37,8.91,2.92,17.8,9.01,24.38.43.46.67,1.07.67,1.7v38.46c0,13.25,10.78,24.03,24.03,24.03s24.03-10.78,24.03-24.03v-38.44c0-.63.24-1.24.67-1.71,5.83-6.24,9.04-14.4,9.04-22.97,0-9.19-3.63-17.79-10.23-24.2-6.56-6.37-15.26-9.75-24.5-9.53Z" style="fill: url(#g_CadenasOpen_Nouvelle_nuance_de_dégradé_2-2);"/>
+  </g>
+  <g>
+    <path d="M394.96,482.08H105.04c-7.09,0-12.85-5.77-12.85-12.85v-248.49c0-7.09,5.77-12.85,12.85-12.85h28.56v-47.89c0-64.18,52.21-116.39,116.39-116.39s116.39,52.21,116.39,116.39v47.89h28.56c7.09,0,12.85,5.77,12.85,12.85v248.49c0,7.09-5.77,12.85-12.85,12.85ZM105.04,212.88c-4.33,0-7.85,3.52-7.85,7.85v248.49c0,4.33,3.52,7.85,7.85,7.85h289.91c4.33,0,7.85-3.52,7.85-7.85v-248.49c0-4.33-3.52-7.85-7.85-7.85h-33.56v-52.89c0-61.42-49.97-111.39-111.39-111.39s-111.39,49.97-111.39,111.39v52.89h-33.56ZM345.69,212.88h-191.37v-52.89c0-52.76,42.92-95.68,95.68-95.68s95.69,42.92,95.69,95.68v52.89ZM159.31,207.88h181.37v-47.89c0-50-40.68-90.68-90.69-90.68s-90.68,40.68-90.68,90.68v47.89Z" style="fill: #0f192e;"/>
+    <path d="M250,410.42c-16.01,0-29.03-13.02-29.03-29.03v-37.5c-6.57-7.47-10.08-17.34-9.67-27.24.84-20.22,17.34-36.52,37.58-37.1h0c10.6-.27,20.58,3.62,28.12,10.94,7.57,7.36,11.74,17.23,11.74,27.78,0,9.5-3.44,18.57-9.71,25.64v37.48c0,16.01-13.02,29.03-29.03,29.03ZM249.01,284.55c-17.62.51-31.99,14.7-32.72,32.3-.37,8.91,2.92,17.8,9.01,24.38l.67.72v39.44c0,13.25,10.78,24.03,24.03,24.03s24.03-10.78,24.03-24.03v-39.43l.67-.72c5.83-6.24,9.03-14.4,9.03-22.97,0-9.19-3.63-17.79-10.23-24.2-6.56-6.37-15.26-9.75-24.5-9.53Z" style="fill: #0f192e;"/>
+  </g>
+</svg>`,
+};
+
+
+// ── STATE ──
+let state = { step:1, goalId:null, qCount:10, company:'votre entreprise', unlocked:false };
+
+// ── INIT ──
+function init() {
+  renderGoals();
+  setupSlider();
+  setStep(1);
+}
+
+function renderGoals() {
+  document.getElementById('goalsGrid').innerHTML = GOALS.map(g => `
+    <button class="zt-goal" onclick="pickGoal('${g.id}')" id="goal_${g.id}">
+      <div class="zt-goal-icon">${ICONS[g.icon] || ''}</div>
+      <div>
+        <div class="zt-goal-name">${g.name}</div>
+        <div class="zt-goal-accroche">${g.accroche}</div>
+      </div>
+    </button>
+  `).join('');
+}
+
+function setupSlider() {
+  const sl = document.getElementById('qSlider');
+  const vl = document.getElementById('qVal');
+  function upd() {
+    const pct = (sl.value - sl.min) / (sl.max - sl.min) * 100;
+    sl.style.background = `linear-gradient(to right, var(--green) ${pct}%, #e0e6ef ${pct}%)`;
+    vl.innerHTML = `${sl.value} <span>questions</span>`;
+    state.qCount = parseInt(sl.value);
+  }
+  sl.addEventListener('input', upd);
+  upd();
+}
+
+function pickGoal(id) {
+  state.goalId = id;
+  document.querySelectorAll('.zt-goal').forEach(b => b.classList.remove('sel'));
+  document.getElementById('goal_'+id)?.classList.add('sel');
+  setTimeout(() => goStep(2), 280);
+}
+
+function goStep(n) {
+  state.step = n;
+  ['sec1','sec2','sec3','secLoad'].forEach(id => document.getElementById(id).style.display='none');
+  if (n===1) document.getElementById('sec1').style.display='';
+  if (n===2) document.getElementById('sec2').style.display='';
+  if (n===3) document.getElementById('sec3').style.display='';
+  setStep(n);
+  // No scroll — tool is sticky, user stays exactly where they are
+}
+
+function setStep(n) {
+  for (let i=1;i<=3;i++) {
+    const el = document.getElementById('s'+i);
+    el.className = 'zt-step' + (i<n?' done':i===n?' active':'');
+  }
+  document.getElementById('l1').className = 'zt-step-line'+(n>1?' done':'');
+  document.getElementById('l2').className = 'zt-step-line'+(n>2?' done':'');
+}
+
+function startGen() {
+  state.company = document.getElementById('companyInput').value.trim() || 'votre entreprise';
+  state.qCount  = parseInt(document.getElementById('qSlider').value);
+  document.getElementById('sec2').style.display='none';
+  document.getElementById('secLoad').style.display='';
+  setStep(3);
+
+  const msgs = [
+    'Sélection des questions selon votre objectif…',
+    'Application de la méthodologie Zest…',
+    `Personnalisation pour ${state.company}…`,
+    'Vérification de la cohérence des questions…',
+    'Finalisation du questionnaire…'
+  ];
+
+  // Variable duration 4–6 seconds
+  const totalMs = 8000 + Math.random() * 2000;
+  const startTime = Date.now();
+
+  const bar = document.getElementById('loadBar');
+  const pct = document.getElementById('loadPct');
+  const msgEl = document.getElementById('loadMsg');
+
+  // Message rotation
+  let mi = 0;
+  const msgInterval = setInterval(() => {
+    mi = (mi + 1) % msgs.length;
+    msgEl.textContent = msgs[mi];
+  }, totalMs / msgs.length);
+
+  // Smooth progress bar — eased, not linear
+  function easeProgress(t) {
+    // Ease in-out cubic — slow start, fast middle, slow end
+    return t < 0.5 ? 4*t*t*t : 1-Math.pow(-2*t+2,3)/2;
+  }
+
+  const rafLoop = () => {
+    const elapsed = Date.now() - startTime;
+    const raw = Math.min(elapsed / totalMs, 0.97); // cap at 97% until done
+    const eased = easeProgress(raw);
+    const display = Math.round(eased * 100);
+    bar.style.width = display + '%';
+    pct.textContent = display + '%';
+    if (elapsed < totalMs) {
+      requestAnimationFrame(rafLoop);
+    }
+  };
+  requestAnimationFrame(rafLoop);
+
+  setTimeout(() => {
+      clearInterval(msgInterval);
+    // Snap to 100%
+    bar.style.width = '100%';
+    pct.textContent = '100%';
+    setTimeout(() => {
+      document.getElementById('secLoad').style.display='none';
+      buildQ();
+      document.getElementById('sec3').style.display='';
+    }, 300);
+  }, totalMs);
+}
+
+function buildQ() {
+  const goal = GOALS.find(g=>g.id===state.goalId);
+  const bank = QUESTIONS[state.goalId] || [];
+  const qs = bank.slice(0, state.qCount);
+
+  document.getElementById('qTitle').textContent = goal?.name + ' — Baromètre social';
+  document.getElementById('qSub').textContent = state.company !== 'votre entreprise' ? state.company : 'Méthodologie Zest';
+  document.getElementById('mCount').textContent = state.qCount + ' questions';
+  document.getElementById('mGoal').textContent = goal?.name || '';
+  document.getElementById('mDate').textContent = new Date().toLocaleDateString('fr-FR',{year:'numeric',month:'long'});
+
+  const container = document.getElementById('qContent');
+  container.innerHTML = '';
+
+  // Show 1 free question
+  const freeQs = qs.slice(0, FREE_Q);
+  freeQs.forEach((fn, i) => {
+    container.innerHTML += fn(i+1, state.company);
+  });
+
+  // Blurred locked section
+  const lockedQs = qs.slice(FREE_Q);
+  if (lockedQs.length > 0) {
+    const wrap = document.createElement('div');
+    wrap.className = 'zt-locked';
+    wrap.id = 'lockedWrap';
+
+    // Gate overlay FIRST — appears immediately after free question, no scrolling
+    const overlay = document.createElement('div');
+    overlay.className = 'zt-locked-overlay';
+    overlay.id = 'gateOverlay';
+    overlay.innerHTML = `
+      <div class="zt-gate">
+        <div class="zt-gate-icon">${ICONS.CadenaClose}</div>
+        <h3>Votre questionnaire est presque prêt</h3>
+        <p>Remplissez le formulaire pour accéder aux ${lockedQs.length} questions restantes et télécharger votre questionnaire.</p>
+        <div class="zt-gate-ratings">
+          <div class="zt-gate-rating-item">
+            <div class="zt-gate-rating-stars">★★★★★</div>
+            <div class="zt-gate-rating-label">4.5/5 · Capterra</div>
+          </div>
+          <div class="zt-gate-rating-sep"></div>
+          <div class="zt-gate-rating-item">
+            <div class="zt-gate-rating-score">8.9<span>/10</span></div>
+            <div class="zt-gate-rating-label">95% avis positifs</div>
+          </div>
+        </div>
+        <button class="zt-btn zt-btn-primary" onclick="openFormOverlay()" style="width:100%;max-width:340px;">
+          Accéder à mon questionnaire complet →
+        </button>
+        <p style="font-size:11px;color:#8c99b0;margin-top:8px;">Gratuit · Méthodologie Zest</p>
+      </div>
+    `;
+    // Blurred preview behind the overlay
+    const blur = document.createElement('div');
+    blur.className = 'zt-locked-blur';
+    lockedQs.slice(0,3).forEach((fn,i) => {
+      blur.innerHTML += fn(FREE_Q+i+1, state.company);
+    });
+    wrap.appendChild(blur);
+    wrap.appendChild(overlay);
+    container.appendChild(wrap);
+
+    // Store locked questions for later unlock
+    state.lockedQs = lockedQs;
+  }
+}
+
+function openFormOverlay() {
+  document.getElementById('ztFormOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Load HubSpot form if not already loaded
+  if (!state.hsFormLoaded) {
+    loadHSFormPanel();
+    state.hsFormLoaded = true;
+  }
+}
+
+function closeFormOverlay() {
+  document.getElementById('ztFormOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function loadHSFormPanel() {
+  if (typeof hbspt !== 'undefined') {
+    hbspt.forms.create({
+      portalId: '25124570',
+      formId: '8f9791c3-fc84-4cfd-b73a-7897c8fb741b',
+      region: 'eu1',
+      target: '#ztHsFormPanel',
+      onFormSubmitted: function() {
+        closeFormOverlay();
+        unlockQ();
+      }
+    });
+  } else {
+    // Fallback
+    document.getElementById('ztHsFormPanel').innerHTML = `
+      <input type="text" id="hsNameFb" placeholder="Votre prénom" class="zt-input" style="margin-bottom:8px">
+      <input type="email" id="hsEmailFb" placeholder="Email professionnel" class="zt-input" style="margin-bottom:12px">
+      <button class="zt-btn zt-btn-primary" style="width:100%" onclick="fallbackSubmitNew()">Accéder à mon questionnaire →</button>
+      <p style="font-size:11px;color:#8c99b0;margin-top:8px;text-align:center">Vos données sont traitées conformément à la politique de confidentialité de Zest.</p>
+    `;
+  }
+}
+
+function fallbackSubmitNew() {
+  const email = document.getElementById('hsEmailFb')?.value;
+  const name  = document.getElementById('hsNameFb')?.value || '';
+  if (!email?.includes('@')) { alert('Veuillez entrer un email valide.'); return; }
+  fetch('https://api.hsforms.com/submissions/v3/integration/submit/25124570/8f9791c3-fc84-4cfd-b73a-7897c8fb741b', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      fields:[{name:'email',value:email},{name:'firstname',value:name}],
+      context:{pageUri:window.location.href,pageName:'Outil Questionnaire Baromètre Social — Zest'}
+    })
+  }).catch(()=>{});
+  closeFormOverlay();
+  unlockQ();
+}
+
+function unlockQ() {
+  state.unlocked = true;
+  const lockedQs = state.lockedQs || [];
+
+  // Remove gate overlay
+  document.getElementById('gateOverlay')?.remove();
+  document.querySelector('.zt-locked-blur')?.remove();
+
+  // Render all locked questions
+  const container = document.getElementById('qContent');
+  const wrap = document.getElementById('lockedWrap');
+  if (wrap) {
+    lockedQs.forEach((fn,i) => {
+      wrap.innerHTML += fn(FREE_Q+i+1, state.company);
+    });
+    wrap.classList.remove('zt-locked');
+  }
+  document.querySelector('.zt-q-scroll-wrap')?.classList.add('unlocked');
+
+  // Show download button
+  const dlWrap = document.getElementById('ztDlWrap');
+  if (dlWrap) dlWrap.classList.add('visible');
+}
+
+
+function doPrint() { generatePDF(); }
+
+function generatePDF() {
+  if (!state.unlocked) { openFormOverlay(); return; }
+  // Write state to localStorage then open results page in new tab
+  try {
+    const qData = {
+      goalId:   state.goalId,
+      qCount:   state.qCount,
+      company:  state.company,
+      date:     new Date().toLocaleDateString('fr-FR', {year:'numeric', month:'long'}),
+      goalName: GOALS.find(g=>g.id===state.goalId)?.name || '',
+    };
+    localStorage.setItem('zt_questionnaire', JSON.stringify(qData));
+  } catch(e) {}
+  window.open('https://zestmeup.com/votre-questionnaire-barometre-social/', '_blank');
+}
+
+
+
+
+
+
+
+
+
+
+
+function closeZtModal() {
+  document.getElementById('ztModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeZtModal();
+});
+
+
+
+
+
+init();
+</script>
+
