@@ -861,29 +861,13 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 // ═══════════════════════════════════
 
 // ── WEATHER IMAGES (base64) ──
-const WEATHER_URLS = {
+const WEATHER = {
   Storm: 'https://raw.githubusercontent.com/moovapp2023/zest_stuff/main/Icones-meteo-zest/Storm.png',
   Rain:  'https://raw.githubusercontent.com/moovapp2023/zest_stuff/main/Icones-meteo-zest/Rain.png',
   Cloud: 'https://raw.githubusercontent.com/moovapp2023/zest_stuff/main/Icones-meteo-zest/Cloud.png',
   Mixed: 'https://raw.githubusercontent.com/moovapp2023/zest_stuff/main/Icones-meteo-zest/Mixed.png',
   Sun:   'https://raw.githubusercontent.com/moovapp2023/zest_stuff/main/Icones-meteo-zest/Sun.png',
 };
-// Preload weather images as blob URLs to bypass any WP content filtering
-const WEATHER = { Storm:'', Rain:'', Cloud:'', Mixed:'', Sun:'' };
-(function preloadWeather() {
-  Object.keys(WEATHER_URLS).forEach(name => {
-    fetch(WEATHER_URLS[name])
-      .then(r => r.blob())
-      .then(blob => {
-        WEATHER[name] = URL.createObjectURL(blob);
-        // Update any already-rendered meteo images
-        document.querySelectorAll('img[data-weather="' + name + '"]').forEach(img => {
-          img.src = WEATHER[name];
-        });
-      })
-      .catch(() => { WEATHER[name] = WEATHER_URLS[name]; });
-  });
-})();
 
 // ── QUESTION TYPE RENDERERS ──
 function renderMeteo(num, text) {
@@ -891,11 +875,11 @@ function renderMeteo(num, text) {
     <div class="zt-q-row"><span class="zt-q-num">${num}.</span><span class="zt-q-text">${text}</span></div>
     <div class="zt-qtype"><span class="zt-qtype-badge">Météo</span></div>
     <div class="zt-meteo">
-      <div class="zt-meteo-opt"><img src="${WEATHER.Storm||WEATHER_URLS.Storm}" data-weather="Storm" alt="Très mal"><div class="zt-meteo-lbl">Très mal</div></div>
-      <div class="zt-meteo-opt"><img src="${WEATHER.Rain||WEATHER_URLS.Rain}" data-weather="Rain" alt="Mal"><div class="zt-meteo-lbl">Mal</div></div>
-      <div class="zt-meteo-opt"><img src="${WEATHER.Cloud||WEATHER_URLS.Cloud}" data-weather="Cloud" alt="Moyen"><div class="zt-meteo-lbl">Moyen</div></div>
-      <div class="zt-meteo-opt"><img src="${WEATHER.Mixed||WEATHER_URLS.Mixed}" data-weather="Mixed" alt="Bien"><div class="zt-meteo-lbl">Bien</div></div>
-      <div class="zt-meteo-opt"><img src="${WEATHER.Sun||WEATHER_URLS.Sun}" data-weather="Sun" alt="Très bien"><div class="zt-meteo-lbl">Très bien</div></div>
+      <div class="zt-meteo-opt"><img src="${WEATHER.Storm}" alt="Très mal" referrerpolicy="no-referrer"><div class="zt-meteo-lbl">Très mal</div></div>
+      <div class="zt-meteo-opt"><img src="${WEATHER.Rain}" alt="Mal" referrerpolicy="no-referrer"><div class="zt-meteo-lbl">Mal</div></div>
+      <div class="zt-meteo-opt"><img src="${WEATHER.Cloud}" alt="Moyen" referrerpolicy="no-referrer"><div class="zt-meteo-lbl">Moyen</div></div>
+      <div class="zt-meteo-opt"><img src="${WEATHER.Mixed}" alt="Bien" referrerpolicy="no-referrer"><div class="zt-meteo-lbl">Bien</div></div>
+      <div class="zt-meteo-opt"><img src="${WEATHER.Sun}" alt="Très bien" referrerpolicy="no-referrer"><div class="zt-meteo-lbl">Très bien</div></div>
     </div>
   </div>`;
 }
